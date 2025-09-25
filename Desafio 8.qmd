@@ -1,0 +1,186 @@
+---
+title: "Desafio 8"
+author: "Victor de Lima Souza 199335"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+# Carregar o pacote
+library(RSQLite)
+
+# Conectar ao banco de dados uwmadison.sqlite3
+conn <- dbConnect(SQLite(), "./uwmadison.sqlite3")
+
+# Conferir as tabelas existentes
+dbListTables(conn)
+
+```
+
+```{r}
+tbls <- list(
+  instructors = "instructors",
+  teachings   = "teachings",
+  sections    = "sections",
+  courses     = "courses",
+  subjects    = "subjects"
+)
+
+# pega campos de cada tabela e mostra
+fields <- lapply(tbls, function(t) dbListFields(conn, t))
+print(fields)
+```
+
+```{r}
+query <- "
+SELECT DISTINCT i.id AS instructor_id,
+       i.name AS instructor_name
+FROM instructors i
+JOIN teachings t ON i.id = t.instructor_id
+JOIN sections s ON t.section_uuid = s.uuid
+JOIN course_offerings co ON s.course_offering_uuid = co.uuid
+JOIN subject_memberships sm ON co.uuid = sm.course_offering_uuid
+JOIN subjects sub ON sm.subject_code = sub.code
+WHERE sub.abbreviation = 'STAT'
+ORDER BY instructor_name;
+"
+
+professores_stat <- dbGetQuery(conn, query)
+print(professores_stat)
+
+cat('Total de professores STAT:', nrow(professores_stat), '\\n')
+```
+
+```{r}
+# Query: agrega contagens por course_offering, filtra STAT e calcula GPA ponderado
+query_gpa_per_offering <- "
+SELECT
+  co.uuid AS course_offering_uuid,
+  co.term_code,
+  c.name AS course_name,
+  c.number AS course_number,
+  SUM(gd.a_count)  AS a_count,
+  SUM(gd.ab_count) AS ab_count,
+  SUM(gd.b_count)  AS b_count,
+  SUM(gd.bc_count) AS bc_count,
+  SUM(gd.c_count)  AS c_count,
+  SUM(gd.d_count)  AS d_count,
+  SUM(gd.f_count)  AS f_count,
+  -- denom: soma dos alunos nos extratos considerados
+  (SUM(gd.a_count) + SUM(gd.ab_count) + SUM(gd.b_count) + SUM(gd.bc_count) + SUM(gd.c_count) + SUM(gd.d_count) + SUM(gd.f_count)) AS students_count,
+  -- média ponderada: soma(peso * count) / denom
+  CASE
+    WHEN (SUM(gd.a_count) + SUM(gd.ab_count) + SUM(gd.b_count) + SUM(gd.bc_count) + SUM(gd.c_count) + SUM(gd.d_count) + SUM(gd.f_count)) = 0
+    THEN NULL
+    ELSE
+      (4.0*SUM(gd.a_count) + 3.5*SUM(gd.ab_count) + 3.0*SUM(gd.b_count) + 2.5*SUM(gd.bc_count) + 2.0*SUM(gd.c_count) + 1.0*SUM(gd.d_count) + 0.0*SUM(gd.f_count))
+      /
+      (SUM(gd.a_count) + SUM(gd.ab_count) + SUM(gd.b_count) + SUM(gd.bc_count) + SUM(gd.c_count) + SUM(gd.d_count) + SUM(gd.f_count))
+  END AS avg_gpa
+FROM grade_distributions gd
+JOIN course_offerings co ON gd.course_offering_uuid = co.uuid
+JOIN subject_memberships sm ON co.uuid = sm.course_offering_uuid
+JOIN subjects sub ON sm.subject_code = sub.code
+LEFT JOIN courses c ON co.course_uuid = c.uuid
+WHERE sub.abbreviation = 'STAT'
+GROUP BY co.uuid, co.term_code, c.name, c.number
+ORDER BY avg_gpa DESC;
+"
+
+gpa_by_offering <- dbGetQuery(conn, query_gpa_per_offering)
+
+# Mostrar resultados
+print(head(gpa_by_offering, 50))  # mostra até 50 primeiras linhas
+cat('Total de oferecimentos STAT retornados:', nrow(gpa_by_offering), "\n")
+
+# Estatísticas adicionais (opcionais):
+# 1) média geral (ponderada por número de alunos por offering)
+total_students_all <- sum(gpa_by_offering$students_count, na.rm = TRUE)
+overall_weighted_mean <- if (total_students_all > 0) {
+  sum(gpa_by_offering$avg_gpa * gpa_by_offering$students_count, na.rm = TRUE) / total_students_all
+} else {
+  NA
+}
+cat('Média geral de GPA (ponderada por alunos):', overall_weighted_mean, '\n')
+
+# 2) offerings com NA em avg_gpa (quando não houve alunos nos extratos considerados)
+na_offerings <- subset(gpa_by_offering, is.na(avg_gpa))
+if (nrow(na_offerings) > 0) {
+  cat('Oferecimentos sem alunos nos extratos A..F (avg_gpa = NA):', nrow(na_offerings), '\n')
+  print(na_offerings)
+}
+```
+
+```{r}
+query_dificuldade_stat <- "
+  SELECT i.name AS professor,
+         SUM(gd.a_count + gd.b_count) * 1.0 / 
+         SUM(gd.a_count + gd.b_count + gd.c_count + gd.d_count + gd.f_count) AS high_grade_ratio
+  FROM grade_distributions gd
+  JOIN sections s ON gd.course_offering_uuid = s.course_offering_uuid AND gd.section_number = s.number
+  JOIN teachings t ON s.uuid = t.section_uuid
+  JOIN instructors i ON t.instructor_id = i.id
+  JOIN course_offerings co ON s.course_offering_uuid = co.uuid
+  JOIN subject_memberships sm ON co.uuid = sm.course_offering_uuid
+  JOIN subjects sub ON sm.subject_code = sub.code
+  WHERE sub.abbreviation = 'STAT'
+  GROUP BY i.name
+  HAVING SUM(gd.a_count + gd.b_count + gd.c_count + gd.d_count + gd.f_count) > 0
+  ORDER BY high_grade_ratio ASC;
+"
+
+dificuldade_professores_stat <- dbGetQuery(conn, query_dificuldade_stat)
+print(dificuldade_professores_stat)
+
+cat("Professor mais difícil:", dificuldade_professores_stat$professor[1], "\n")
+cat("Professor mais fácil:", tail(dificuldade_professores_stat$professor, 1), "\n")
+```
+
+```{r}
+#Não consegui fazer esse exercício apenas por SQL
+library(dplyr)
+
+gpa_por_disciplina <- gpa_by_offering %>%
+  filter(!is.na(avg_gpa)) %>%
+  group_by(course_name) %>%
+  summarise(
+    total_alunos = sum(students_count),
+    gpa_ponderado = sum(avg_gpa * students_count) / sum(students_count)
+  ) %>%
+  arrange(gpa_ponderado)
+
+print(gpa_por_disciplina)
+
+cat("Disciplina mais difícil:", gpa_por_disciplina$course_name[1], "\n")
+cat("Disciplina mais fácil:", tail(gpa_por_disciplina$course_name, 1), "\n")
+```
+
+```{r}
+dbDisconnect(conn)
+```
+
+```{r}
+timestamp <- format(Sys.time(), "%d/%m/%Y %H:%M:%S")
+cat("Relatório gerado em:", timestamp)
+```

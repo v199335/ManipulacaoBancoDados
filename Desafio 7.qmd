@@ -1,0 +1,206 @@
+---
+title: "Desafio 7"
+author: "Victor de Lima Souza 199335"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+library(RSQLite)
+library(tidyverse)
+
+# Caminhos corretos
+origem <- file.path("./disco.db")
+destino <- file.path("./discoCopy.db")
+
+# Garante que o arquivo esteja presente no final
+if(!file.exists(destino)){
+  file.copy(origem, destino, overwrite = TRUE)
+}
+
+# Verifica se a cópia existe
+print(file.exists(destino))
+
+# Conecta ao banco
+db <- dbConnect(SQLite(), destino)
+
+```
+
+```{r}
+dbListTables(db)
+
+dbExecute(db, "
+CREATE TABLE IF NOT EXISTS instruments (
+  AlbumId INTEGER,
+  TrackId INTEGER,
+  ElectricGuitar INTEGER,
+  Singer INTEGER,
+  Trumpet INTEGER
+)")
+
+```
+
+```{r}
+dbListFields(db,
+'instruments')
+
+```
+
+```{r}
+sql = paste('SELECT TrackId, Name FROM tracks',
+'WHERE AlbumId = 85')
+dbGetQuery(db, sql) %>% head
+
+```
+
+```{r}
+dbExecute(db,
+"INSERT INTO instruments
+VALUES ('85'
+,
+'1075'
+, 0, 1, 0),
+('85'
+,
+'1078'
+, 0, 1, 0); ")
+
+```
+
+```{r}
+dbGetQuery(db,
+"SELECT * FROM instruments")
+
+```
+
+```{r}
+dbWriteTable(db,
+"mtcars", mtcars, overwrite = TRUE)
+
+dbListTables(db)
+
+dbGetQuery(db,
+"SELECT * FROM mtcars") %>% head(3)
+
+```
+
+```{r}
+theAvgCar <- mtcars %>%
+summarise_all(function(x) round(mean(x), 2))
+theAvgCar
+
+dbWriteTable(db,
+"mtcars"
+, theAvgCar, append = TRUE)
+dbGetQuery(db,
+"SELECT * FROM mtcars") %>% tail(3)
+```
+
+```{r}
+dbWriteTable(db,
+"mtcars"
+, mtcars, overwrite = TRUE)
+dbGetQuery(db,
+"SELECT * FROM mtcars") %>% tail(3)
+
+```
+
+```{r}
+res <- dbSendQuery(db,
+"SELECT * FROM mtcars WHERE cyl = 4")
+while(!dbHasCompleted(res)){
+chunk <- dbFetch(res, n = 5)
+print(nrow(chunk))
+}
+
+dbClearResult(res)
+
+```
+
+```{r}
+dbDisconnect(db)
+if("discoCopy.db" %in% list.files("../dados/")){
+file.remove("../dados/discoCopy.db")
+}
+
+```
+
+```{r}
+# Definir caminho da pasta
+
+# Importar CSVs
+airports <- read_csv(file.path("./airports.csv"), col_types = "cccccdd")
+airlines <- read_csv(file.path("./airlines.csv"), col_types = "cc")
+
+# Criar/conectar ao banco SQLite
+air <- dbConnect(SQLite(), dbname = file.path("./air.db"))
+
+# Escrever tabelas no banco
+dbWriteTable(air, name = "airports", airports, overwrite = TRUE)
+dbWriteTable(air, name = "airlines", airlines, overwrite = TRUE)
+
+# Listar tabelas existentes
+dbListTables(air)
+
+```
+
+```{r}
+dbDisconnect(air)
+if("air.db" %in% list.files("../dados/")){
+file.remove("../dados/air.db")
+}
+
+```
+
+```{r}
+library(RSQLite)
+library(tidyverse)
+library(dbplyr)
+
+# Conectar ao banco no caminho correto
+db <- dbConnect(SQLite(), "./disco.db")
+
+# Acessar a tabela 'tracks'
+tracks <- tbl(db, "tracks")
+
+# Visualizar as 3 primeiras linhas
+tracks %>% head(3)
+```
+
+```{r}
+meanTracks <- tracks %>%
+group_by(AlbumId) %>%
+summarise(AvLen = mean(Milliseconds, na.rm = TRUE),
+AvCost = mean(UnitPrice, na.rm = TRUE))
+meanTracks
+```
+
+```{r}
+meanTracks %>% show_query()
+
+mT <- meanTracks %>% collect()
+mT
+
+dbDisconnect(db) 
+```

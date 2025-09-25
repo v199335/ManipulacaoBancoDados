@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Victor de Lima Souza 199335">
+
+<title>Desafio 8</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Desafio 8_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Desafio 8_files/libs/quarto-html/quarto.js"></script>
+<script src="Desafio 8_files/libs/quarto-html/popper.min.js"></script>
+<script src="Desafio 8_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Desafio 8_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Desafio 8_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Desafio 8_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Desafio 8_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Desafio 8_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Desafio 8_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Desafio 8</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Victor de Lima Souza 199335 </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+</section>
+<section id="running-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar o pacote</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Conectar ao banco de dados uwmadison.sqlite3</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">SQLite</span>(), <span class="st">"./uwmadison.sqlite3"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Conferir as tabelas existentes</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "course_offerings"    "courses"             "grade_distributions"
+ [4] "instructors"         "rooms"               "schedules"          
+ [7] "sections"            "subject_memberships" "subjects"           
+[10] "teachings"          </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tbls <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">instructors =</span> <span class="st">"instructors"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">teachings   =</span> <span class="st">"teachings"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sections    =</span> <span class="st">"sections"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">courses     =</span> <span class="st">"courses"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">subjects    =</span> <span class="st">"subjects"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># pega campos de cada tabela e mostra</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>fields <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tbls, <span class="cf">function</span>(t) <span class="fu">dbListFields</span>(conn, t))</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fields)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$instructors
+[1] "id"   "name"
+
+$teachings
+[1] "instructor_id" "section_uuid" 
+
+$sections
+[1] "uuid"                 "course_offering_uuid" "section_type"        
+[4] "number"               "room_uuid"            "schedule_uuid"       
+
+$courses
+[1] "uuid"   "name"   "number"
+
+$subjects
+[1] "code"         "name"         "abbreviation"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT DISTINCT i.id AS instructor_id,</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">       i.name AS instructor_name</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM instructors i</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN teachings t ON i.id = t.instructor_id</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN sections s ON t.section_uuid = s.uuid</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN course_offerings co ON s.course_offering_uuid = co.uuid</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN subject_memberships sm ON co.uuid = sm.course_offering_uuid</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN subjects sub ON sm.subject_code = sub.code</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE sub.abbreviation = 'STAT'</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY instructor_name;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>professores_stat <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, query)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(professores_stat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    instructor_id               instructor_name
+1         4787911               ABIGAIL BENZINE
+2         3111842          ADIN-CRISTIAN ANDREI
+3         3775809                AKICHIKA OZEKI
+4         4958796                    ALAN HUANG
+5         5451706               ALBERTO DEL PIA
+6         3661782                ALBRECHT KLEMM
+7         5656034           ALEXANDER COVINGTON
+8         4680082                ALEXANDER FISH
+9         3573775             ALEXANDER KISELEV
+10        5162339                ALYSSA DIGILIO
+11         129415                  ANATOLE BECK
+12        3674168                 ANDREJ ZLATOS
+13        5003565                 ANDREW LESLIE
+14        4952769                 ANNE BRUCKNER
+15        5498092                      ANQI SHI
+16        4646729                    ANRU ZHANG
+17        2600893                 ARNOLD MILLER
+18        4963378                 AUGUST JENSEN
+19        5852265                BEHZAD AALIPUR
+20        5694563     BEHZAD AALIPUR HAFSHEJANI
+21        4140469              BEN ADAM HAALAND
+22        4538519                 BENEDEK VALKO
+23        4632211                BENJAMIN RECHT
+24        5906523                   BI CHENG WU
+25        4155990                       BIN DAI
+26        5186047                     BIN ZHANG
+27        4436066                       BIN ZHU
+28        5144884                  BINGYING XIE
+29        3484236                      BO HUANG
+30        5632570                       BO YANG
+31        5690247                      BOWEN HU
+32        4753018                   BRET HANLON
+33         751075                   BRET LARGET
+34        2602055                 BRIAN YANDELL
+35        5011312                   BROOK LUERS
+36        3955546                    CECILE ANE
+37        5883206                     CHAN PARK
+38        3976099                   CHANHAN HSU
+39        4724058                   CHAOQUN MEI
+40        4712098                   CHAOYANG YU
+41        3376532                 CHELSEY GREEN
+42        4586558                    CHEN CHENG
+43        5018463                     CHEN JING
+44        5592111               CHENGNING ZHANG
+45        4597046                  CHENLIANG XU
+46        4903489               CHENSHENG KUANG
+47        3973813                     CHENXI LI
+48        3629214                CHIA-CHIEH LIN
+49        3613299                CHIEN-WEI CHEN
+50         340544      CHRISTINA M. KENDZIORSKI
+51         138086            CHRISTINE SORKNESS
+52        3855025            CHRISTOPHER WAGNER
+53        5887049                  CLAIRE BOBST
+54        4721578           CLAUDIA SOLIS LEMUS
+55        4312759                     COLE COOK
+56        5332940               COLIN LONGHURST
+57        5498648                  CRYSTAL CHEN
+58        5015194                     CUICUI QI
+59        5176022                     CUIZE HAN
+60        5846795           DANIELE CAPPELLETTI
+61        4308515                DAVID ANDERSON
+62        2601596                  DAVID DEMETS
+63        2602109               DAVID GRIFFEATH
+64        6043299                    DEBRAJ DAS
+65        4264265                    DEREK BEAN
+66        5305675                  DEREK NORTON
+67        3773167                  DEYUAN JIANG
+68        2600233           DIETRICH UHLENBROCK
+69         393380                 DONALD PORTER
+70        4898014                      DONG XIA
+71        4897725                   DONGGYU KIM
+72        5620719                  DONGHYUN LEE
+73        2602050              DOUGLAS M. BATES
+74        4728844                    DUY NGUYEN
+75        5516726                    DUZHE WANG
+76        5189535                  EDWARD ERKER
+77        2824494               ELOISA D CHAVAS
+78        3566378             ERICA LEE DEADMAN
+79        2602042                 ERIK NORDHEIM
+80        5204089                       FAN GAO
+81        4437355                      FAN YANG
+82        3460189                     FANG FANG
+83        3783301                 FANGFANG WANG
+84        4601948              FLORIAN BERTRAND
+85         361804               FREDERICK BOEHM
+86        5214164              GARVESH RASKUTTI
+87         495087         GARY HOWARD SCHROEDER
+88        4957688                       GENG LI
+89        5017655                GINA BENNINGER
+90        5862942                       GINA OH
+91        5320625              GONZALO CONTADOR
+92        2600488                   GRACE WAHBA
+93        4761200        GREGORIO MORENO-FLORES
+94        5127444              GREGORY SHINAULT
+95        4272783                  GUANHUA CHEN
+96        4436002                   GUANNAN SUN
+97        1505756                GUILHERME ROSA
+98        4886028 GUILHERME VIEIRA NUNES LUDWIG
+99        4884161                GUN WOONG PARK
+100       5010171                      HAN CHEN
+101       5514514                      HAO CHEN
+102       5520701                      HAO TENG
+103       4435790                     HAO ZHENG
+104       5323690                      HAO ZHOU
+105       3456935                      HAODA FU
+106       4725072                   HAOYANG FAN
+107       4149843         HEATHER MARIE BRAZEAU
+108       3623432                  HUAIBAO FENG
+109       3483534                      HUI WANG
+110       5168069                  HUIKUN ZHANG
+111       5167990                     HUILIN HU
+112       5321537                   HYEBIN SONG
+113       4734607                HYUNSEUNG KANG
+114        801445            IAN BRANSTAD RILEY
+115        143932                 ISMOR FISCHER
+116       5515948                JAMES ANDERSON
+117       2601633                JAMES D KUELBS
+118       4636315                   JARED BROWN
+119       3011936                  JASON P FINE
+120       3956063         JASON RICHARD SWANSON
+121       4140397                  JEE YEON KIM
+122       4890283                     JEEA CHOI
+123       4636145             JENNIFER BIRSTLER
+124       4613728               JENNIFER NGUYEN
+125       3627934           JESSE THOMAS HOLZER
+126       4590715                   JIAJIE CHEN
+127       4433317                      JIALE XU
+128       4603165                       JIAN WU
+129       4886987                  JIANCHANG HU
+130       5410648                      JIE SONG
+131       4292460                       JIE WEI
+132       4436368                     JIE ZHANG
+133       4734274                     JILI WANG
+134       3783649                   JINGCI MENG
+135       3973318                JINGJIANG PENG
+136       4902482                    JINGLAN LI
+137       4286103                    JIWEI ZHAO
+138       4880968                    JOHN DAVIS
+139        608997                  JOHN GILLETT
+140       3806328                     JOHN KANE
+141       4896511         JOHN WILTSHIRE-GORDON
+142       1634418             JONATHON PETERSON
+143       1126199                 JOSEP GINEBRA
+144       4610245                JOSEPH DEUTSCH
+145       4731731                    JU HEE CHO
+146       3981051                        JUN LI
+147       1079018                      JUN SHAO
+148       3620114                       JUN YIN
+149       3781764                     JUN ZHANG
+150        321374                       JUN ZHU
+151       3095399                   JUNGWON MUN
+152       3620552                    JUNHEE HAN
+153       4541633                     JUNHO LEE
+154       5012817                   KAILEI CHEN
+155       2602032                  KAM-WAH TSUI
+156       4541610                   KARL BROMAN
+157       4929500                     KARL ROHE
+158       4491860               KATHERINE GOODE
+159       3777992               KAZUHIKO SHINKI
+160       4261114              KEEGAN KORTHAUER
+161       3127329                       KEN ONO
+162       3978606            KEVIN HASEGAWA ENG
+163       4744350                 KEVIN PACKARD
+164       3404299                  KJELL DOKSUM
+165       5476019  KRISHNAKUMAR BALASUBRAMANIAN
+166       4199106                KRISTEN CYFFKA
+167       5697552                 KUNLING HUANG
+168       5317373                   KYLE HEBERT
+169       5478075                   KYLE HERBET
+170        207204                 KYUNGMANN KIM
+171       4435446                        LAM HO
+172       5521838                       LAN LUO
+173       3103459                LANCINE KONATE
+174       3443667                        LEI XU
+175       3437432                   LEV BORISOV
+176       4845798                 LIAM JOHNSTON
+177       4277002                     LIE XIONG
+178       3980675                      LILI LAN
+179       5693114                    LILI ZHENG
+180       4578330                      LILUN DU
+181       5514932                        LIN QI
+182       5015113                     LONG PHAN
+183       4726678                        LU MAO
+184       5010560                       LU YANG
+185       5017774                   LUWAN ZHANG
+186       5192960                      LUXI CAO
+187       5302154            MANJUSHA KANCHARLA
+188       2601674                    MARI PALTA
+189       4195000              MARIA KAMENETSKY
+190       5167906                    MARIA ROJO
+191        245914               MARIAN R FISHER
+192        333334                MARY LINDSTROM
+193       3467530               MATTHEW BALLARD
+194       4280220                     MENG SONG
+195       1114818                MICHAEL FERRIS
+196        783769          MICHAEL GEORGE ILTIS
+197        270258                 MICHAEL HOGAN
+198       5708167               MICHAEL KUTZLER
+199       5840930                  MICHAEL LIOU
+200       2601916                MICHAEL NEWTON
+201        989414          MICHAEL RENE KOSOROK
+202        394810               MICHELLE HARRIS
+203       6029366                 MIHAELA IFRIM
+204       3575433                  MIN JUNG LEE
+205       3965653                       MIN NIU
+206       4133622                      MING XIE
+207       3077702                     MING YUAN
+208       4392906                   MINJING TAO
+209       4947463              MITCHELL PAUKNER
+210       3404298                   MOO K CHUNG
+211       5514561                    MUHONG GAO
+212       2601621                MURRAY CLAYTON
+213       1505727         NATALIA DE LEON GATTI
+214        232828               NELLIE LAUGHLIN
+215       3523865            NICHOLAS HENDERSON
+216        640407       NICHOLAS STEPHEN KEULER
+217       5523214                      NING FAN
+218       3882760            NORBERT BINKIEWICZ
+219       2600689                 NORMAN DRAPER
+220       2601093            PAUL M TERWILLIGER
+221        967335                  PAUL RATHOUZ
+222       5631398              PAUL SAVARIAPPAN
+223       5326263                   PEIGEN ZHOU
+224       4149787                   PERLA REYES
+225       1515839                   PHILIP WOOD
+226       4633355                      QI JIANG
+227       3974100                       QI TANG
+228       3338237                 QIAN ZHIGUANG
+229       5718599                       QING LI
+230       4460098                   QIONG ZHANG
+231       4582107                   QIURONG CUI
+232       4432994                    QUEFENG LI
+233       4161984                     QUOC TRAN
+234        789363                REBECCA KOSCIK
+235       5488796                  REBECCA POST
+236       2600141             RICHARD A BRUALDI
+237       2601613            RICHARD A. JOHNSON
+238       2601926           RICHARD J. CHAPPELL
+239       4957895                 ROBERT HARRON
+240       2601512                ROBERT R MEYER
+241       2601091                ROBERT WARDROP
+242       3780010            ROBERT WAYNE GREEN
+243        893827                RONALD GANGNON
+244       5887858                   RONGJUN ZHU
+245       5690182                      RUI CHEN
+246       4128750                      RUI TANG
+247       3987897                  RUIFANG SONG
+248       3343055                    RUIFENG XU
+249       5898424                   RUNGANG HAN
+250       5020061                     RUOSI GUO
+251       3727371                      RYAN ZEA
+252       4752238              SAMUEL STECHMANN
+253       3981781                  SANGBUM CHOI
+254       5354849                 SCOTT HOTTOVY
+255       3253489           SCOTT JOSEPH HETZEL
+256       5068296                     SEAN KENT
+257       5110390                SEBASTIEN ROCH
+258       4733192                     SEHO PARK
+259       5520811                   SEULKEE YUN
+260       3573852                 SEUNGBONG HAN
+261       5905014                       SHAN LU
+262        982957                  SHANE HUBLER
+263       5515201                      SHANG WU
+264       4146030                    SHENG WANG
+265       5906594                    SHENG WANG
+266       4285558                   SHENG ZHANG
+267       5017571                   SHENGJI JIA
+268       3127330                       SHI JIN
+269       4885477                    SHIXUE LIU
+270       4598772                  SHIZHEN WANG
+271       4699427                    SHUAI CHEN
+272       4271924                  SHUANG HUANG
+273       5170885                   SHULEI WANG
+274       4588354                     SHUYUN YE
+275       3622809                   SIJIAN WANG
+276       5323628                     SIJING LI
+277       5176905                SOHEIL SADEGHI
+278       4593965                    SOKOL VAKO
+279       3955531                SONA Z SWANSON
+280       4953246                     SONG WANG
+281       3884290  SRIKANTHMADHAVAN ARAVAMUTHAN
+282       2600973                 STEFFEN LEMPP
+283       3122658        STEPHEN AARON STANHOPE
+284       4538540                  STEPHEN BERG
+285       2601051               STEPHEN WAINGER
+286       3382451                STEPHEN WRIGHT
+287       5452538                    STEVEN SAM
+288       3117835             SUKHENDU MEHROTRA
+289       3801422                  SUNDUZ KELES
+290       4590738                     TAERI UHM
+291       3781422                        TAO YU
+292       5023414       THEVAASIINEN CHANDERENG
+293        417071                   THOMAS COOK
+294       2601039               THOMAS G. KURTZ
+295       4904255                        THU LE
+296       4896939                       TIEN VO
+297       3374880              TIMO SEPPALAINEN
+298       4879129                 TIMOTHY IDOWU
+299       4957916                 TIMOTHY IDOWU
+300       5520995                       TING YE
+301       3351080                   TING-LI LIN
+302       5329574                       TONG LI
+303       3230527                  TONGHAI YANG
+304       4896172                       TRAM TA
+305       5567363                    TUN LEE NG
+306       5664494               TZU HSIANG HUNG
+307       3959251               VARSHA KULKARNI
+308       4641200                    VICTOR LUO
+309       4788841            VICTORIA MANSFIELD
+310       4434130                  WAI TONG FAN
+311       3780817                     WEI ZHENG
+312       2602108                   WEI-YIN LOH
+313       4590481                  WENWEN ZHANG
+314       5322094                    WENZHI CAO
+315       5161294                  WESLEY CHANG
+316       4591139                      XIAO GUO
+317       4905505                      XIAO NIE
+318       3343005                   XIAODAN WEI
+319       5170801                    XIAOMAO LI
+320       4729481                 XIAOPING FENG
+321       5258581                    XIAOWU DAI
+322       4285528                        XIN LI
+323       4588103                     XIN ZHANG
+324       4726666                     XINJIE HE
+325       3620612                   XINWEI DENG
+326       4286679                     XINXIN YU
+327       4430246                    XINYU SONG
+328       4145889                    XIPEI YANG
+329       5170924                    XIRAN WANG
+330       4194670                  XIUFENG SHAO
+331       5322566                      XIUYU MA
+332       3791802                      XIWEN MA
+333       4286138                         XU HE
+334       4590559                         XU XU
+335       4726703                   XUEYAO CHEN
+336       3668575                      XUN ZHAO
+337       4426932                     YAJUAN SI
+338       3800708                     YALI WANG
+339       4721620                      YAN CHEN
+340       3457484                 YANBING ZHENG
+341       4285354                     YANG ZHAO
+342       4172260                    YANNAN QIU
+343       4895244                    YAOGUO XIE
+344       4576059                     YAOYAO XU
+345       4695492                   YAZHEN WANG
+346       4285538                       YI CHAI
+347       5327139                         YI LI
+348       4586128                        YI LIU
+349       5693277                     YIFAN MEI
+350       5323691                   YILIN ZHANG
+351       5170492                    YING ZHANG
+352       5696436                   YONGFENG WU
+353       5644228                  YONGJOON KIM
+354       5518378                    YONGSU LEE
+355       5514517                     YOUNG LEE
+356       5177493                YOUNG MIN PARK
+357       4278664               YOUNGDEOK HWANG
+358       5326059                     YOURAN QI
+359       3010828                   YU MENGGANG
+360       3961448                    YU QIU LIU
+361       3791787                    YUAN JIANG
+362       5167973                       YUAN LI
+363       4733966                     YUAN WANG
+364       4906458                    YUANZHI LI
+365       5903922                    YUCHANG WU
+366       5700058                   YUCHEN ZHOU
+367       4144479                   YUJIN CHUNG
+368       5907599                    YUNONG LIN
+369       5214858                     YUQING XU
+370       1426304                ZHANG CHUNMING
+371       4108525                ZHENGJUN ZHANG
+372       3107260                  ZHENGXIAO WU
+373       4588525                  ZHIGENG GENG
+374       3339239                   ZHIGUO XIAO
+375       5693629                   ZHONGJIE YU
+376       3626007                     ZHUANG WU
+377       5099221                   ZIFENG ZHAO
+378       5591917                     ZIJIAN NI
+379       4138542                 ZUOFENG SHANG</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'Total de professores STAT:'</span>, <span class="fu">nrow</span>(professores_stat), <span class="st">'</span><span class="sc">\\</span><span class="st">n'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total de professores STAT: 379 \n</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Query: agrega contagens por course_offering, filtra STAT e calcula GPA ponderado</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>query_gpa_per_offering <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">  co.uuid AS course_offering_uuid,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">  co.term_code,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">  c.name AS course_name,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">  c.number AS course_number,</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">  SUM(gd.a_count)  AS a_count,</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">  SUM(gd.ab_count) AS ab_count,</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">  SUM(gd.b_count)  AS b_count,</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">  SUM(gd.bc_count) AS bc_count,</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">  SUM(gd.c_count)  AS c_count,</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="st">  SUM(gd.d_count)  AS d_count,</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="st">  SUM(gd.f_count)  AS f_count,</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="st">  -- denom: soma dos alunos nos extratos considerados</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="st">  (SUM(gd.a_count) + SUM(gd.ab_count) + SUM(gd.b_count) + SUM(gd.bc_count) + SUM(gd.c_count) + SUM(gd.d_count) + SUM(gd.f_count)) AS students_count,</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="st">  -- média ponderada: soma(peso * count) / denom</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="st">  CASE</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN (SUM(gd.a_count) + SUM(gd.ab_count) + SUM(gd.b_count) + SUM(gd.bc_count) + SUM(gd.c_count) + SUM(gd.d_count) + SUM(gd.f_count)) = 0</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="st">    THEN NULL</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="st">    ELSE</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="st">      (4.0*SUM(gd.a_count) + 3.5*SUM(gd.ab_count) + 3.0*SUM(gd.b_count) + 2.5*SUM(gd.bc_count) + 2.0*SUM(gd.c_count) + 1.0*SUM(gd.d_count) + 0.0*SUM(gd.f_count))</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="st">      /</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="st">      (SUM(gd.a_count) + SUM(gd.ab_count) + SUM(gd.b_count) + SUM(gd.bc_count) + SUM(gd.c_count) + SUM(gd.d_count) + SUM(gd.f_count))</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="st">  END AS avg_gpa</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="st">FROM grade_distributions gd</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN course_offerings co ON gd.course_offering_uuid = co.uuid</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN subject_memberships sm ON co.uuid = sm.course_offering_uuid</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN subjects sub ON sm.subject_code = sub.code</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="st">LEFT JOIN courses c ON co.course_uuid = c.uuid</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE sub.abbreviation = 'STAT'</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY co.uuid, co.term_code, c.name, c.number</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY avg_gpa DESC;</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>gpa_by_offering <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, query_gpa_per_offering)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar resultados</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(gpa_by_offering, <span class="dv">50</span>))  <span class="co"># mostra até 50 primeiras linhas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   course_offering_uuid term_code
+1  03a9c506-e84e-32be-809b-2a627d59039b      1144
+2  08edea19-83c3-3765-b5b4-c431072816d0      1084
+3  08f6a901-f828-3016-84b1-155b2be00b4a      1112
+4  0ba0ecff-0db3-3456-a22e-5e4c34ca5f6e      1162
+5  0e380b70-9aaf-3bce-82eb-c992cd95c97b      1142
+6  12097603-b92f-313c-be47-9441c8fe1aef      1112
+7  177c6187-4894-36af-98c8-62fdea95ab3a      1132
+8  251c8d23-ac07-35d6-b328-94968c9f4667      1102
+9  2e5560aa-1a2c-33f7-879b-fc44e208c35a      1172
+10 2ef2253f-0315-3819-a08c-82ffe83033fb      1174
+11 3da8bfdc-592d-3732-b75d-5e55e13bc9c9      1104
+12 40b6e2e2-ebb5-3a34-b30a-471380fe09cf      1144
+13 490b39de-4ea1-3d3f-9483-3623b3a67acb      1082
+14 4fec5a39-703f-3bb9-8faf-1a708bafe861      1102
+15 53311951-9d2a-3988-a023-c5627f2ccdad      1174
+16 594b037d-2a78-32db-a544-8060ae4076e7      1072
+17 5b63b1ad-aa14-3a84-b54e-2d49dd0dfebf      1142
+18 606fc2ba-e356-3d52-8b8f-7baf458de327      1164
+19 66abc53c-4dd7-3980-a63b-0f6d11d6f7fd      1092
+20 726ad152-fd61-3e82-85f9-1b6399f9f64f      1092
+21 75e3fca9-3f5f-3148-b32d-e1a8e150cfd4      1154
+22 788480b4-ce87-348f-83b3-dc2352bcccd4      1162
+23 78e0886e-7286-3439-8a5b-aca60479364f      1132
+24 8f0b71c2-4638-3bf2-83a7-d60158062fd1      1072
+25 9145b488-2f12-353a-b38a-a75dbb2cc17d      1174
+26 a06c5a32-9d3c-35ac-89f1-5b52dfd02671      1132
+27 a333ef75-a26c-3968-a5df-21173d7cab0d      1102
+28 ae460f19-7eaf-3e62-bcf7-c009b3c5adb4      1154
+29 ae8f4910-c6b4-3bb3-ada5-a98b3e33ce9c      1114
+30 b415c03f-bcf0-343e-b152-68164d2a3dba      1144
+31 b44768cf-1ee8-3081-8e04-3675361790f8      1162
+32 c54dd1e6-c32a-38c6-ae21-304e35d3d955      1094
+33 c89a58ea-a92b-3e1f-abcc-757bb9f500d2      1084
+34 d25f2429-9554-302c-8397-0726ad20e9cc      1182
+35 e03512aa-4f65-375f-88d3-81ebf853bff4      1182
+36 e2d35f0a-ba9b-3176-8f4f-ec648c2b6039      1114
+37 e48c3f1e-9cea-37c3-b2cb-446e4c4f3baf      1094
+38 ea669759-6b5e-3c2a-bf07-519b15819c6c      1182
+39 f22e1c46-3cf2-3dcd-9024-2e74f0ea2260      1154
+40 f35f658f-ebe4-38cc-97e8-1bcc05782cc1      1082
+41 f72188c7-f5c0-3fac-8978-f9712a666ebf      1114
+42 f8ee9890-d071-388e-b75b-12dc370e50a7      1154
+43 f91a4aea-b38c-30cb-8b70-c399758c0a93      1162
+44 b10c122f-d2a3-3d42-9f48-cbf0c6237eb0      1142
+45 734b39ca-337e-352b-b13c-5be0cae69dc2      1134
+46 a56cd21b-739a-367b-aa60-d33b04d21ad0      1182
+47 1718ca09-50a7-35bf-9714-efe341fadc1e      1102
+48 d6198043-b881-3fbc-9d9c-41a76f78ab75      1114
+49 ca325483-1d19-30e8-8300-e10153c49343      1142
+50 537c4fed-2bce-3970-99b5-225781dcc55a      1172
+                                             course_name course_number a_count
+1                                 Statistical Consulting           998      13
+2                              Non Parametric Statistics           809      12
+3                                                Seminar           992      24
+4                           Special Topics in Statistics           679      29
+5                        Sample Survey Theory and Method           811      13
+6                      Estimation of Functions from Data           860       8
+7                    Topics in the Theory of Probability           833       9
+8                                  Experimental Design I           803      16
+9                                                Seminar           992      10
+10                     Introduction to Clinical Trials I           542      19
+11                                               Seminar           992      15
+12                   Topics in the Theory of Probability           833      14
+13                     Estimation of Functions from Data           860      11
+14                       Sample Survey Theory and Method           811      13
+15                   Topics in the Theory of Probability           833      22
+16               Statistical Model Building and Learning           840      13
+17                                 Experimental Design I           803      19
+18                                Data Science Practicum           628      12
+19                   Topics in the Theory of Probability           833      11
+20              Decision Trees for Multivariate Analysis           761      23
+21              Decision Trees for Multivariate Analysis           761      33
+22                                               Seminar           992      46
+23                     Estimation of Functions from Data           860      14
+24                   Topics in the Theory of Probability           833       8
+25             Statistical Methods for Molecular Biology           877      13
+26              Decision Trees for Multivariate Analysis           761      27
+27                   Topics in the Theory of Probability           833      13
+28                          Special Topics in Statistics           692       7
+29              Decision Trees for Multivariate Analysis           761      22
+30                                               Seminar           992      12
+31 Nonparametric Statistics and Machine Learning Methods           841      24
+32                        Empir Proc&amp;Semiparmtrc Infernc           834       8
+33                          Special Topics in Statistics           692       8
+34                  Statistical Methods for Epidemiology           642      16
+35                                Statistical Consulting           998      17
+36                                               Seminar           992      22
+37                                               Seminar           992      17
+38                       Sample Survey Theory and Method           811      14
+39                   Topics in the Theory of Probability           833      10
+40                       Sample Survey Theory and Method           811      14
+41                          Special Topics in Statistics           692      11
+42                  Statistical Methods for Epidemiology           642      11
+43               Statistical Model Building and Learning           840      24
+44               Statistical Model Building and Learning           840      22
+45                                               Seminar           992      21
+46                               Multivariate Analysis I           760      20
+47               Statistical Model Building and Learning           840      19
+48                             Non Parametric Statistics           809      19
+49                                               Seminar           992      18
+50                             Non Parametric Statistics           809      16
+   ab_count b_count bc_count c_count d_count f_count students_count  avg_gpa
+1         0       0        0       0       0       0             13 4.000000
+2         0       0        0       0       0       0             12 4.000000
+3         0       0        0       0       0       0             24 4.000000
+4         0       0        0       0       0       0             29 4.000000
+5         0       0        0       0       0       0             13 4.000000
+6         0       0        0       0       0       0              8 4.000000
+7         0       0        0       0       0       0              9 4.000000
+8         0       0        0       0       0       0             16 4.000000
+9         0       0        0       0       0       0             10 4.000000
+10        0       0        0       0       0       0             19 4.000000
+11        0       0        0       0       0       0             15 4.000000
+12        0       0        0       0       0       0             14 4.000000
+13        0       0        0       0       0       0             11 4.000000
+14        0       0        0       0       0       0             13 4.000000
+15        0       0        0       0       0       0             22 4.000000
+16        0       0        0       0       0       0             13 4.000000
+17        0       0        0       0       0       0             19 4.000000
+18        0       0        0       0       0       0             12 4.000000
+19        0       0        0       0       0       0             11 4.000000
+20        0       0        0       0       0       0             23 4.000000
+21        0       0        0       0       0       0             33 4.000000
+22        0       0        0       0       0       0             46 4.000000
+23        0       0        0       0       0       0             14 4.000000
+24        0       0        0       0       0       0              8 4.000000
+25        0       0        0       0       0       0             13 4.000000
+26        0       0        0       0       0       0             27 4.000000
+27        0       0        0       0       0       0             13 4.000000
+28        0       0        0       0       0       0              7 4.000000
+29        0       0        0       0       0       0             22 4.000000
+30        0       0        0       0       0       0             12 4.000000
+31        0       0        0       0       0       0             24 4.000000
+32        0       0        0       0       0       0              8 4.000000
+33        0       0        0       0       0       0              8 4.000000
+34        0       0        0       0       0       0             16 4.000000
+35        0       0        0       0       0       0             17 4.000000
+36        0       0        0       0       0       0             22 4.000000
+37        0       0        0       0       0       0             17 4.000000
+38        0       0        0       0       0       0             14 4.000000
+39        0       0        0       0       0       0             10 4.000000
+40        0       0        0       0       0       0             14 4.000000
+41        0       0        0       0       0       0             11 4.000000
+42        0       0        0       0       0       0             11 4.000000
+43        1       0        0       0       0       0             25 3.980000
+44        1       0        0       0       0       0             23 3.978261
+45        1       0        0       0       0       0             22 3.977273
+46        1       0        0       0       0       0             21 3.976190
+47        1       0        0       0       0       0             20 3.975000
+48        1       0        0       0       0       0             20 3.975000
+49        1       0        0       0       0       0             19 3.973684
+50        1       0        0       0       0       0             17 3.970588</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'Total de oferecimentos STAT retornados:'</span>, <span class="fu">nrow</span>(gpa_by_offering), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total de oferecimentos STAT retornados: 746 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estatísticas adicionais (opcionais):</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) média geral (ponderada por número de alunos por offering)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>total_students_all <span class="ot">&lt;-</span> <span class="fu">sum</span>(gpa_by_offering<span class="sc">$</span>students_count, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>overall_weighted_mean <span class="ot">&lt;-</span> <span class="cf">if</span> (total_students_all <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(gpa_by_offering<span class="sc">$</span>avg_gpa <span class="sc">*</span> gpa_by_offering<span class="sc">$</span>students_count, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> total_students_all</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'Média geral de GPA (ponderada por alunos):'</span>, overall_weighted_mean, <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Média geral de GPA (ponderada por alunos): 3.24215 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) offerings com NA em avg_gpa (quando não houve alunos nos extratos considerados)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>na_offerings <span class="ot">&lt;-</span> <span class="fu">subset</span>(gpa_by_offering, <span class="fu">is.na</span>(avg_gpa))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(na_offerings) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">'Oferecimentos sem alunos nos extratos A..F (avg_gpa = NA):'</span>, <span class="fu">nrow</span>(na_offerings), <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(na_offerings)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Oferecimentos sem alunos nos extratos A..F (avg_gpa = NA): 83 
+                    course_offering_uuid term_code
+664 011d9daf-c271-3c62-90f4-a3f752b8547c      1164
+665 02e9d068-6914-3413-899b-68e58277d9dc      1112
+666 035f6a64-d676-36dd-b4df-b4fb6666dedf      1142
+667 0806f2ba-9286-3d18-9031-5830b1b972bb      1144
+668 0b6ea061-2d2f-3555-9d97-21b51fba0399      1162
+669 0e98266e-b0c1-3a35-8c09-7eca327175fa      1152
+670 11b30c21-f0ec-3a8a-ba4b-c7e58c98b639      1152
+671 176d87ef-9032-3b87-88c2-a86cac70c801      1084
+672 1869c297-4d07-3d63-8e85-77621b8311e0      1082
+673 196324bb-c7a4-3a19-bd3d-ad59a5404fcb      1162
+674 1a4b033f-466f-3311-b4df-7ebb64b4891a      1144
+675 1e56660f-990a-38b0-abe0-0f7bfc7b4465      1164
+676 1f192578-cf5d-3388-bc24-6b0e8aa6964a      1134
+677 206e5da0-207c-3c6f-971e-a89bb35f3136      1122
+678 229ac93a-f7a2-366c-8817-be35b0b43bd6      1134
+679 27c595df-75cf-33fc-8377-c7577afd2782      1164
+680 27e14a81-5b2b-39b8-93e0-b9bcafcecc8f      1142
+681 2c67801b-743a-33f7-9705-5afe02705e3a      1074
+682 2d7caa7c-0d65-37e6-8a72-f41f7bb43343      1162
+683 2da36a3e-3771-3949-a711-a7cd6a8b7ec9      1182
+684 2e410d81-2558-3423-a7a1-7f59c3acd0c0      1132
+685 2ee99ddc-827b-35e7-aa72-466070d50a80      1114
+686 327002d3-db6f-31d3-90cd-8b743b250f87      1074
+687 338e1ea4-4793-3b42-b34c-ef9c17e49f9c      1114
+688 33e50935-48e7-34b2-a57a-e68210f7a12e      1134
+689 36bd51b8-0ac7-31c3-9301-e6eb2190a861      1154
+690 38924a61-3095-37e4-b254-6256d912f3fa      1084
+691 3b95a1bf-d74c-3a32-880b-44af2b94e0df      1182
+692 3c39cfa0-9cd1-3d55-8db1-2db06f475704      1112
+693 3dba5991-e557-363b-9d7a-59af15721dde      1072
+694 47c787c7-c6cd-31ed-8353-4d041d07f2c2      1132
+695 498999b4-57e1-38e6-a21b-7f7e104327e4      1082
+696 5300ae06-fa92-314c-877d-9b6a9a80f0b2      1094
+697 58cebd85-133b-3791-8a17-64bbb8d10b10      1122
+698 5a6f9ebc-3f55-3e1e-b954-c83a95cf51e2      1152
+699 5b545e81-ca7d-3b53-872d-89cb360a0ec0      1132
+700 5c86e9d9-6283-3a95-af81-1886a3f2f9b7      1122
+701 5da154c0-c218-3efc-a3af-9ec296b3e528      1172
+702 61be0b23-5eaf-3b4e-a879-8a85384b421e      1174
+703 62c2aa17-10ac-3346-b37a-0feb4ac3679c      1092
+704 69407247-3523-30a0-893f-1fc9884efe80      1172
+705 6dc2efda-5a1c-35a9-a548-4ee1fd6ed122      1154
+706 7322eeef-91bb-3abc-86a8-5241b873f631      1102
+707 754896e2-af7a-3bc3-a2d9-2c86c2103835      1134
+708 79181564-9dac-3a70-b15c-7959f75185c1      1094
+709 7b729f6c-6d15-3404-b499-9b36b118e097      1082
+710 7be6b833-565b-317b-a9d6-bb7e2b73920a      1084
+711 7ecfeff8-28cc-3f42-8041-5269efb879a9      1094
+712 82f21896-0bf2-3692-8454-7f6c19fac9b9      1092
+713 87c9d644-af35-3c9c-9456-ebda1b90fcd9      1182
+714 8a6644e0-c04f-3bab-a845-ab7bce7ca72f      1174
+715 929af1f8-2d33-3795-b0b6-da7856a2315e      1074
+716 94450d1f-5e08-334f-836f-aa9edb92f663      1174
+717 982f635c-c0bd-3a4e-b3fe-e41c3000129a      1164
+718 991ed1c4-79b0-372a-a43b-0f96eb4cec87      1092
+719 9ac4d294-a8c9-39dd-af1a-47d0f444d68c      1154
+720 9cf4dd8b-b8f8-3677-b037-a3c864d0bf0b      1074
+721 a3c79352-6d75-38a0-997f-810617e3784d      1162
+722 a70e39a1-d1fd-3989-bb83-c140e350fb1d      1122
+723 aace4892-b7bb-39e9-b9a6-64597d1a0420      1182
+724 ac774b82-8fb2-37a6-8a9f-eeec70b6ce31      1174
+725 b6c35e7d-b895-32d9-9596-e454ca608f41      1162
+726 b963946b-786a-3ea4-8e9c-03fbd757ad5c      1142
+727 bad60098-a48e-3507-8ec2-ad38e4d409b3      1104
+728 bd13cc8c-d0a2-3d90-bc3e-11b98f87ce89      1144
+729 c4a4d3bf-1102-3a05-8c62-5aa0a1c09545      1142
+730 c670cbef-b287-3474-ab4c-24b5df466a01      1132
+731 cd5224bb-d90f-39f0-b1d8-5ca9d4148d1e      1154
+732 d081eff0-a7d0-3b73-af40-1267c79b432f      1144
+733 d137ac9e-62ee-3672-80fd-1627763f9800      1084
+734 d5a72c85-def0-36f4-a5ee-60df7de65c25      1072
+735 d710cafb-7fa5-3c89-9290-a04d27bddd7a      1102
+736 df1dbcf4-58ee-30a5-9c2c-c5e9127718b3      1082
+737 df33ef17-8158-3b37-9279-fd089f5c7b67      1112
+738 e25ce8fa-d069-3d66-ae0a-0d1ddfb51822      1154
+739 e578e9fe-d9df-3af8-8bd6-494a6c688c43      1134
+740 e737ebff-31b4-3c3f-8562-948555cc9a4d      1172
+741 e9776846-4edd-3d5b-85f7-911966530eaa      1114
+742 f31699f7-0b49-38af-ad39-06c7510d63ee      1104
+743 f6406b4e-25c1-308c-8871-350019e3dab5      1172
+744 fd220a07-b325-327b-9878-923c183fac0a      1094
+745 ff6f73eb-219e-32bc-b368-b3affd3729aa      1142
+746 ffe240c9-b7cd-37f1-91f1-e5d96329077d      1152
+                                                     course_name course_number
+664                                         Senior Honors Thesis           682
+665                                       Statistical Consulting           998
+666                                               Directed Study           698
+667                                         Senior Honors Thesis           681
+668                                               Directed Study           699
+669                                         Senior Honors Thesis           682
+670                                               Directed Study           699
+671 Practicum in Clinical Trial Data Analysis and Interpretation           546
+672                                                     Research           990
+673                                         Senior Honors Thesis           682
+674                                         Senior Honors Thesis           682
+675                                               Directed Study           698
+676                                         Senior Honors Thesis           682
+677                                               Directed Study           698
+678                                               Directed Study           699
+679                                                     Research           990
+680                                               Directed Study           699
+681                                               Directed Study           699
+682                                               Directed Study           698
+683                                               Directed Study           698
+684                                               Directed Study           699
+685                                               Directed Study           699
+686 Practicum in Clinical Trial Data Analysis and Interpretation           546
+687 Practicum in Clinical Trial Data Analysis and Interpretation           546
+688 Practicum in Clinical Trial Data Analysis and Interpretation           546
+689                                         Senior Honors Thesis           681
+690                                                     Research           990
+691                                               Directed Study           699
+692                                               Directed Study           699
+693                                                     Research           990
+694                                         Senior Honors Thesis           681
+695                                               Directed Study           699
+696                                                     Research           990
+697                                         Senior Honors Thesis           682
+698                                                     Research           990
+699               Statistical Methods for Medical Image Analysis           768
+700                                                     Research           990
+701                                               Directed Study           698
+702                                               Directed Study           698
+703                                               Directed Study           699
+704                                                     Research           990
+705                                         Senior Honors Thesis           682
+706                                               Directed Study           699
+707                                                     Research           990
+708                                               Directed Study           698
+709                                               Directed Study           698
+710                                               Directed Study           699
+711                                         Senior Honors Thesis           682
+712                                                     Research           990
+713                                         Senior Honors Thesis           681
+714                                               Directed Study           699
+715                                               Directed Study           698
+716                                                     Research           990
+717                                               Directed Study           699
+718                                         Senior Honors Thesis           681
+719                                               Directed Study           698
+720                                                     Research           990
+721                                         Senior Honors Thesis           681
+722                                               Directed Study           699
+723                                                     Research           990
+724                                         Senior Honors Thesis           682
+725                                                     Research           990
+726                                         Senior Honors Thesis           681
+727                                               Directed Study           699
+728                                               Directed Study           699
+729                                                     Research           990
+730                                                     Research           990
+731                                               Directed Study           699
+732                                                     Research           990
+733                                       Statistical Consulting           998
+734                                               Directed Study           699
+735                                                     Research           990
+736                                                      Seminar           992
+737                                                     Research           990
+738                                                     Research           990
+739                                               Directed Study           698
+740                                         Senior Honors Thesis           681
+741                                                     Research           990
+742                                                     Research           990
+743                                               Directed Study           699
+744                                               Directed Study           699
+745               Statistical Methods for Medical Image Analysis           768
+746                                         Senior Honors Thesis           681
+    a_count ab_count b_count bc_count c_count d_count f_count students_count
+664       0        0       0        0       0       0       0              0
+665       0        0       0        0       0       0       0              0
+666       0        0       0        0       0       0       0              0
+667       0        0       0        0       0       0       0              0
+668       0        0       0        0       0       0       0              0
+669       0        0       0        0       0       0       0              0
+670       0        0       0        0       0       0       0              0
+671       0        0       0        0       0       0       0              0
+672       0        0       0        0       0       0       0              0
+673       0        0       0        0       0       0       0              0
+674       0        0       0        0       0       0       0              0
+675       0        0       0        0       0       0       0              0
+676       0        0       0        0       0       0       0              0
+677       0        0       0        0       0       0       0              0
+678       0        0       0        0       0       0       0              0
+679       0        0       0        0       0       0       0              0
+680       0        0       0        0       0       0       0              0
+681       0        0       0        0       0       0       0              0
+682       0        0       0        0       0       0       0              0
+683       0        0       0        0       0       0       0              0
+684       0        0       0        0       0       0       0              0
+685       0        0       0        0       0       0       0              0
+686       0        0       0        0       0       0       0              0
+687       0        0       0        0       0       0       0              0
+688       0        0       0        0       0       0       0              0
+689       0        0       0        0       0       0       0              0
+690       0        0       0        0       0       0       0              0
+691       0        0       0        0       0       0       0              0
+692       0        0       0        0       0       0       0              0
+693       0        0       0        0       0       0       0              0
+694       0        0       0        0       0       0       0              0
+695       0        0       0        0       0       0       0              0
+696       0        0       0        0       0       0       0              0
+697       0        0       0        0       0       0       0              0
+698       0        0       0        0       0       0       0              0
+699       0        0       0        0       0       0       0              0
+700       0        0       0        0       0       0       0              0
+701       0        0       0        0       0       0       0              0
+702       0        0       0        0       0       0       0              0
+703       0        0       0        0       0       0       0              0
+704       0        0       0        0       0       0       0              0
+705       0        0       0        0       0       0       0              0
+706       0        0       0        0       0       0       0              0
+707       0        0       0        0       0       0       0              0
+708       0        0       0        0       0       0       0              0
+709       0        0       0        0       0       0       0              0
+710       0        0       0        0       0       0       0              0
+711       0        0       0        0       0       0       0              0
+712       0        0       0        0       0       0       0              0
+713       0        0       0        0       0       0       0              0
+714       0        0       0        0       0       0       0              0
+715       0        0       0        0       0       0       0              0
+716       0        0       0        0       0       0       0              0
+717       0        0       0        0       0       0       0              0
+718       0        0       0        0       0       0       0              0
+719       0        0       0        0       0       0       0              0
+720       0        0       0        0       0       0       0              0
+721       0        0       0        0       0       0       0              0
+722       0        0       0        0       0       0       0              0
+723       0        0       0        0       0       0       0              0
+724       0        0       0        0       0       0       0              0
+725       0        0       0        0       0       0       0              0
+726       0        0       0        0       0       0       0              0
+727       0        0       0        0       0       0       0              0
+728       0        0       0        0       0       0       0              0
+729       0        0       0        0       0       0       0              0
+730       0        0       0        0       0       0       0              0
+731       0        0       0        0       0       0       0              0
+732       0        0       0        0       0       0       0              0
+733       0        0       0        0       0       0       0              0
+734       0        0       0        0       0       0       0              0
+735       0        0       0        0       0       0       0              0
+736       0        0       0        0       0       0       0              0
+737       0        0       0        0       0       0       0              0
+738       0        0       0        0       0       0       0              0
+739       0        0       0        0       0       0       0              0
+740       0        0       0        0       0       0       0              0
+741       0        0       0        0       0       0       0              0
+742       0        0       0        0       0       0       0              0
+743       0        0       0        0       0       0       0              0
+744       0        0       0        0       0       0       0              0
+745       0        0       0        0       0       0       0              0
+746       0        0       0        0       0       0       0              0
+    avg_gpa
+664      NA
+665      NA
+666      NA
+667      NA
+668      NA
+669      NA
+670      NA
+671      NA
+672      NA
+673      NA
+674      NA
+675      NA
+676      NA
+677      NA
+678      NA
+679      NA
+680      NA
+681      NA
+682      NA
+683      NA
+684      NA
+685      NA
+686      NA
+687      NA
+688      NA
+689      NA
+690      NA
+691      NA
+692      NA
+693      NA
+694      NA
+695      NA
+696      NA
+697      NA
+698      NA
+699      NA
+700      NA
+701      NA
+702      NA
+703      NA
+704      NA
+705      NA
+706      NA
+707      NA
+708      NA
+709      NA
+710      NA
+711      NA
+712      NA
+713      NA
+714      NA
+715      NA
+716      NA
+717      NA
+718      NA
+719      NA
+720      NA
+721      NA
+722      NA
+723      NA
+724      NA
+725      NA
+726      NA
+727      NA
+728      NA
+729      NA
+730      NA
+731      NA
+732      NA
+733      NA
+734      NA
+735      NA
+736      NA
+737      NA
+738      NA
+739      NA
+740      NA
+741      NA
+742      NA
+743      NA
+744      NA
+745      NA
+746      NA</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>query_dificuldade_stat <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT i.name AS professor,</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="st">         SUM(gd.a_count + gd.b_count) * 1.0 / </span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">         SUM(gd.a_count + gd.b_count + gd.c_count + gd.d_count + gd.f_count) AS high_grade_ratio</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM grade_distributions gd</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="st">  JOIN sections s ON gd.course_offering_uuid = s.course_offering_uuid AND gd.section_number = s.number</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="st">  JOIN teachings t ON s.uuid = t.section_uuid</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="st">  JOIN instructors i ON t.instructor_id = i.id</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="st">  JOIN course_offerings co ON s.course_offering_uuid = co.uuid</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st">  JOIN subject_memberships sm ON co.uuid = sm.course_offering_uuid</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="st">  JOIN subjects sub ON sm.subject_code = sub.code</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE sub.abbreviation = 'STAT'</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY i.name</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="st">  HAVING SUM(gd.a_count + gd.b_count + gd.c_count + gd.d_count + gd.f_count) &gt; 0</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY high_grade_ratio ASC;</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>dificuldade_professores_stat <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, query_dificuldade_stat)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dificuldade_professores_stat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        professor high_grade_ratio
+1           GARY HOWARD SCHROEDER        0.5047619
+2           JASON RICHARD SWANSON        0.5277778
+3                     LUWAN ZHANG        0.5384615
+4                    ANATOLE BECK        0.5454545
+5                  SONA Z SWANSON        0.5500000
+6                  JAMES D KUELBS        0.5517241
+7                   ANDREJ ZLATOS        0.5555556
+8                 DAVID GRIFFEATH        0.5785124
+9                  ALEXANDER FISH        0.5833333
+10              JONATHON PETERSON        0.6071429
+11                    BROOK LUERS        0.6145833
+12                   RUIFANG SONG        0.6190476
+13         GREGORIO MORENO-FLORES        0.6200000
+14                      FANG FANG        0.6201550
+15                   TONGHAI YANG        0.6351351
+16               SAMUEL STECHMANN        0.6363636
+17                     VICTOR LUO        0.6388889
+18                        SHI JIN        0.6470588
+19                 GINA BENNINGER        0.6511628
+20                THOMAS G. KURTZ        0.6551724
+21                  STEFFEN LEMPP        0.6557377
+22                    ZHIGUO XIAO        0.6595745
+23              ALEXANDER KISELEV        0.6626506
+24                 ROBERT R MEYER        0.6666667
+25                    JUNGWON MUN        0.6717557
+26             RICHARD A. JOHNSON        0.6746988
+27                STEPHEN WAINGER        0.6808511
+28        NICHOLAS STEPHEN KEULER        0.6836394
+29               KEEGAN KORTHAUER        0.6847826
+30              RICHARD A BRUALDI        0.7000000
+31                  ROBERT HARRON        0.7000000
+32                  ARNOLD MILLER        0.7068966
+33                   CHENLIANG XU        0.7074468
+34   KRISHNAKUMAR BALASUBRAMANIAN        0.7100000
+35                     TUN LEE NG        0.7142857
+36               GREGORY SHINAULT        0.7148594
+37                  CHELSEY GREEN        0.7171717
+38                    JARED BROWN        0.7189189
+39                 MICHAEL FERRIS        0.7226562
+40                        QI TANG        0.7235294
+41                  ISMOR FISCHER        0.7236965
+42                 STEPHEN WRIGHT        0.7262931
+43                ALBERTO DEL PIA        0.7272727
+44            DIETRICH UHLENBROCK        0.7272727
+45                      HUILIN HU        0.7272727
+46                    LEV BORISOV        0.7272727
+47            ALEXANDER COVINGTON        0.7352941
+48                     CHEN CHENG        0.7407407
+49                  SCOTT HOTTOVY        0.7407407
+50                     JOHN DAVIS        0.7480720
+51                 DAVID ANDERSON        0.7557252
+52               TIMO SEPPALAINEN        0.7584650
+53                    YAZHEN WANG        0.7585644
+54          JOHN WILTSHIRE-GORDON        0.7600000
+55                        JUN YIN        0.7608696
+56                  KEVIN PACKARD        0.7623318
+57                    PHILIP WOOD        0.7666667
+58                     JINGLAN LI        0.7692308
+59                     JU HEE CHO        0.7692308
+60                    SHENG ZHANG        0.7708333
+61                CHENSHENG KUANG        0.7738095
+62                  DONALD PORTER        0.7774194
+63             PAUL M TERWILLIGER        0.7787234
+64                        BO YANG        0.7803468
+65                       BOWEN HU        0.7826087
+66            DANIELE CAPPELLETTI        0.7844311
+67               GARVESH RASKUTTI        0.7871287
+68                      JILI WANG        0.7887324
+69                  AUGUST JENSEN        0.7891156
+70                        QING LI        0.7900172
+71                     STEVEN SAM        0.7916667
+72                      JIE ZHANG        0.7920000
+73                       DONG XIA        0.7939394
+74                  MIHAELA IFRIM        0.7941176
+75                 SEBASTIEN ROCH        0.7959184
+76                   KAM-WAH TSUI        0.7966574
+77                        BIN ZHU        0.8000000
+78           MICHAEL GEORGE ILTIS        0.8018868
+79                        JIAN WU        0.8043478
+80                    XIAODAN WEI        0.8045977
+81                 CHIEN-WEI CHEN        0.8048780
+82                COLIN LONGHURST        0.8106509
+83                    TING-LI LIN        0.8141026
+84                NELLIE LAUGHLIN        0.8152174
+85                 BENJAMIN RECHT        0.8211921
+86                  TIMOTHY IDOWU        0.8226950
+87                    DONGGYU KIM        0.8256881
+88                     YU QIU LIU        0.8262195
+89                  BENEDEK VALKO        0.8271955
+90                MATTHEW BALLARD        0.8275862
+91                       LUXI CAO        0.8285714
+92                   REBECCA POST        0.8305085
+93                     QUEFENG LI        0.8333333
+94                    XINWEI DENG        0.8354167
+95              SUKHENDU MEHROTRA        0.8400000
+96                         YI LIU        0.8410256
+97                   JOHN GILLETT        0.8465238
+98                ABIGAIL BENZINE        0.8469945
+99               DOUGLAS M. BATES        0.8474870
+100                 MICHAEL HOGAN        0.8526316
+101                   BRET HANLON        0.8547106
+102                  SHANE HUBLER        0.8616352
+103                        TAO YU        0.8617021
+104            VICTORIA MANSFIELD        0.8624161
+105               FREDERICK BOEHM        0.8635347
+106                  DONGHYUN LEE        0.8636364
+107                    SHENG WANG        0.8648649
+108                   KYLE HEBERT        0.8664260
+109                     CUIZE HAN        0.8666667
+110                    MARI PALTA        0.8666667
+111                    SHUAI CHEN        0.8666667
+112                     WEI ZHENG        0.8684211
+113                     SIJING LI        0.8719008
+114              PAUL SAVARIAPPAN        0.8791946
+115                      HAO TENG        0.8795181
+116                        LEI XU        0.8807339
+117                ALBRECHT KLEMM        0.8823529
+118           JESSE THOMAS HOLZER        0.8823529
+119                     KARL ROHE        0.8824701
+120                    YAOGUO XIE        0.8859060
+121                       KEN ONO        0.8870968
+122                ALYSSA DIGILIO        0.8888889
+123                HYUNSEUNG KANG        0.8888889
+124                    ANRU ZHANG        0.8900524
+125                  WAI TONG FAN        0.8928571
+126                  SUNDUZ KELES        0.8947368
+127                    YANNAN QIU        0.8947368
+128                 JOSEP GINEBRA        0.8961039
+129                AKICHIKA OZEKI        0.8974359
+130                    DUZHE WANG        0.8975410
+131                   WEI-YIN LOH        0.9000000
+132                ROBERT WARDROP        0.9007092
+133                         YI LI        0.9047619
+134                 LIAM JOHNSTON        0.9090909
+135                      RYAN ZEA        0.9097222
+136 GUILHERME VIEIRA NUNES LUDWIG        0.9160839
+137                    ALAN HUANG        0.9166667
+138                ZHENGJUN ZHANG        0.9177102
+139                   SIJIAN WANG        0.9184783
+140                   KARL BROMAN        0.9189189
+141                      ANQI SHI        0.9194631
+142                      NING FAN        0.9206349
+143                    DEREK BEAN        0.9230769
+144                  KJELL DOKSUM        0.9239130
+145                    XINYU SONG        0.9274194
+146             JENNIFER BIRSTLER        0.9306569
+147                      SHANG WU        0.9310345
+148                      XIAO GUO        0.9310345
+149      CHRISTINA M. KENDZIORSKI        0.9315068
+150                 ERIK NORDHEIM        0.9324324
+151                      JIE SONG        0.9340659
+152                   BRET LARGET        0.9350962
+153                    DEBRAJ DAS        0.9384615
+154               ELOISA D CHAVAS        0.9420290
+155                   THOMAS COOK        0.9494949
+156              FLORIAN BERTRAND        0.9523810
+157                   SHENGJI JIA        0.9523810
+158                    CECILE ANE        0.9566161
+159                   MINJING TAO        0.9580420
+160               KAZUHIKO SHINKI        0.9583333
+161       THEVAASIINEN CHANDERENG        0.9593496
+162                    XIAOMAO LI        0.9622642
+163                ZHANG CHUNMING        0.9631148
+164                     YOUNG LEE        0.9652174
+165              GONZALO CONTADOR        0.9652778
+166                     LIE XIONG        0.9661017
+167                 KYUNGMANN KIM        0.9702970
+168                       YUAN LI        0.9704641
+169                  PAUL RATHOUZ        0.9714286
+170                     COLE COOK        0.9736842
+171                MARY LINDSTROM        0.9754601
+172                 QIAN ZHIGUANG        0.9756522
+173           RICHARD J. CHAPPELL        0.9783784
+174                REBECCA KOSCIK        0.9810606
+175                       TONG LI        0.9821429
+176                JOSEPH DEUTSCH        0.9843750
+177                   YU MENGGANG        0.9848485
+178                      JUN SHAO        0.9910714
+179          ADIN-CRISTIAN ANDREI        0.9915966
+180                     SONG WANG        0.9927536
+181                     YUAN WANG        0.9939024
+182                MURRAY CLAYTON        0.9970149
+183                 BRIAN YANDELL        1.0000000
+184                  DAVID DEMETS        1.0000000
+185                      FAN YANG        1.0000000
+186                 FANGFANG WANG        1.0000000
+187                   GRACE WAHBA        1.0000000
+188                  GUANHUA CHEN        1.0000000
+189                JAMES ANDERSON        1.0000000
+190                  JASON P FINE        1.0000000
+191                       JUN ZHU        1.0000000
+192                        LU MAO        1.0000000
+193                MICHAEL NEWTON        1.0000000
+194                     MING YUAN        1.0000000
+195                   MOO K CHUNG        1.0000000
+196                 NORMAN DRAPER        1.0000000
+197                   PEIGEN ZHOU        1.0000000
+198                RONALD GANGNON        1.0000000
+199                       SHAN LU        1.0000000
+200  SRIKANTHMADHAVAN ARAVAMUTHAN        1.0000000
+201                    WENZHI CAO        1.0000000
+202                     YAJUAN SI        1.0000000
+203                 YANBING ZHENG        1.0000000
+204                     YIFAN MEI        1.0000000
+205                    YONGSU LEE        1.0000000
+206                     YOURAN QI        1.0000000
+207                   ZIFENG ZHAO        1.0000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Professor mais difícil:"</span>, dificuldade_professores_stat<span class="sc">$</span>professor[<span class="dv">1</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Professor mais difícil: GARY HOWARD SCHROEDER </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Professor mais fácil:"</span>, <span class="fu">tail</span>(dificuldade_professores_stat<span class="sc">$</span>professor, <span class="dv">1</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Professor mais fácil: ZIFENG ZHAO </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Não consegui fazer esse exercício apenas por SQL</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Anexando pacote: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Os seguintes objetos são mascarados por 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Os seguintes objetos são mascarados por 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>gpa_por_disciplina <span class="ot">&lt;-</span> gpa_by_offering <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(avg_gpa)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(course_name) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_alunos =</span> <span class="fu">sum</span>(students_count),</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">gpa_ponderado =</span> <span class="fu">sum</span>(avg_gpa <span class="sc">*</span> students_count) <span class="sc">/</span> <span class="fu">sum</span>(students_count)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(gpa_ponderado)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gpa_por_disciplina)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 66 × 3
+   course_name                                        total_alunos gpa_ponderado
+   &lt;chr&gt;                                                     &lt;int&gt;         &lt;dbl&gt;
+ 1 Introduction to the Theory of Probability                  2231          2.89
+ 2 Linear Programming Methods                                 1083          2.95
+ 3 Introduction to Probability and Mathematical Stat…         1188          3.03
+ 4 Introduction to Stochastic Processes                        851          3.04
+ 5 Introduction to Probability and Mathematical Stat…          771          3.06
+ 6 Introductory Statistics for Engineers                      3911          3.08
+ 7 Introduction to Statistical Methods                       14550          3.08
+ 8 Introduction to Combinatorics                               846          3.10
+ 9 Introduction to Theory and Methods of Mathematica…         2710          3.15
+10 Introductory Applied Statistics for Engineers              2460          3.18
+# ℹ 56 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Disciplina mais difícil:"</span>, gpa_por_disciplina<span class="sc">$</span>course_name[<span class="dv">1</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Disciplina mais difícil: Introduction to the Theory of Probability </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Disciplina mais fácil:"</span>, <span class="fu">tail</span>(gpa_por_disciplina<span class="sc">$</span>course_name, <span class="dv">1</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Disciplina mais fácil: Sample Survey Theory and Method </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>timestamp <span class="ot">&lt;-</span> <span class="fu">format</span>(<span class="fu">Sys.time</span>(), <span class="st">"%d/%m/%Y %H:%M:%S"</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Relatório gerado em:"</span>, timestamp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Relatório gerado em: 25/09/2025 00:58:44</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
