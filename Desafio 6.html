@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Victor de Lima Souza 199335">
+
+<title>Desafio 6</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Desafio 6_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Desafio 6_files/libs/quarto-html/quarto.js"></script>
+<script src="Desafio 6_files/libs/quarto-html/popper.min.js"></script>
+<script src="Desafio 6_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Desafio 6_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Desafio 6_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Desafio 6_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Desafio 6_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Desafio 6_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Desafio 6_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Desafio 6</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Victor de Lima Souza 199335 </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+</section>
+<section id="running-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Baixe o arquivo disco.db e armazene na variável path o caminho completo (pasta) na qual o arquivo foi gravado. Utilize o comando file.path() para combinar a variável path com o nome do arquivo (disco.db) e obter o nome do arquivo com seu respectivo caminho. Armazene este resultado na variável fname.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Caminho da pasta onde está o arquivo</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"./ME315"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Montando o caminho completo do arquivo disco.db</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>fname <span class="ot">&lt;-</span> <span class="fu">file.path</span>(path, <span class="st">"disco.db"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Conferindo</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>fname</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "./ME315/disco.db"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Utilizando o pacote RSQLite, conecte-se ao arquivo de banco de dados. Armazene a conexão na variável conn.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. iste as tabelas existentes no banco de dados.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Identifique os nomes de todas as colunas existentes na tabela customers.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar pacotes</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Conectar</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), fname)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar tabelas disponíveis</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "albums"          "artists"         "customers"       "employees"      
+ [5] "genres"          "invoice_items"   "invoices"        "media_types"    
+ [9] "playlist_track"  "playlists"       "sqlite_sequence" "sqlite_stat1"   
+[13] "tracks"         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListFields</span>(conn, <span class="st">"customers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "CustomerId"   "FirstName"    "LastName"     "Company"      "Address"     
+ [6] "City"         "State"        "Country"      "PostalCode"   "Phone"       
+[11] "Fax"          "Email"        "SupportRepId"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Utilizando apenas SQLite, com o apoio do comando dbGetQuery, identifique quantos clientes estão atualmente cadastrados neste banco de dados.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT COUNT(*) FROM customers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  COUNT(*)
+1       59</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Utilizando apenas SQLite, identifique o número de países diferentes em que moram os clientes encontrados acima.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT DISTINCT Country FROM customers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Country
+1          Brazil
+2         Germany
+3          Canada
+4          Norway
+5  Czech Republic
+6         Austria
+7         Belgium
+8         Denmark
+9             USA
+10       Portugal
+11         France
+12        Finland
+13        Hungary
+14        Ireland
+15          Italy
+16    Netherlands
+17         Poland
+18          Spain
+19         Sweden
+20 United Kingdom
+21      Australia
+22      Argentina
+23          Chile
+24          India</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Utilizando apenas SQLite, quantos clientes existem por país? A tabela resultante deve conter o nome do país e a respectiva contagem, além de ser ordenada de maneira decrescente pela referida contagem.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT Country, COUNT(*) AS total_clientes</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM customers</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY Country</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY total_clientes DESC;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Country total_clientes
+1             USA             13
+2          Canada              8
+3          France              5
+4          Brazil              5
+5         Germany              4
+6  United Kingdom              3
+7        Portugal              2
+8           India              2
+9  Czech Republic              2
+10         Sweden              1
+11          Spain              1
+12         Poland              1
+13         Norway              1
+14    Netherlands              1
+15          Italy              1
+16        Ireland              1
+17        Hungary              1
+18        Finland              1
+19        Denmark              1
+20          Chile              1
+21        Belgium              1
+22        Austria              1
+23      Australia              1
+24      Argentina              1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. Quais são os 5 países com mais clientes registrados? Use apenas SQLite.</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT Country, COUNT(*) AS total_clientes</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM customers</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY Country</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY total_clientes DESC</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="st">    LIMIT 5;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Country total_clientes
+1     USA             13
+2  Canada              8
+3  France              5
+4  Brazil              5
+5 Germany              4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 9. Quais são os países registrados que possuem apenas 6 letras no nome?</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT DISTINCT Country</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM customers</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE LENGTH(Country) = 6;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Country
+1  Brazil
+2  Canada
+3  Norway
+4  France
+5  Poland
+6  Sweden</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 10. Quais foram as músicas compradas por clientes brasileiros?</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT DISTINCT t.Name AS Musica</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM customers c</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN invoices i ON c.CustomerId = i.CustomerId</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN invoice_items ii ON i.InvoiceId = ii.InvoiceId</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN tracks t ON ii.TrackId = t.TrackId</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE c.Country = 'Brazil';</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                      Musica
+1                                                                        Experiment In Terra
+2                                                                          Take the Celestra
+3                                                                          Shout It Out Loud
+4                                                                           Calling Dr. Love
+5                                                                                   Strutter
+6                                                                                   Cold Gin
+7                                                                            Think About You
+8                                                                               Rocket Queen
+9                                                                       Don't Cry (Original)
+10                                                                            Back off Bitch
+11                                                                            Garden of Eden
+12                                                                                      Coma
+13                                                                  All Along The Watchtower
+14                                      Karelia Suite, Op.11: 2. Ballade (Tempo Di Menuetto)
+15                                                                  Fantasia On Greensleeves
+16                                                                           Interlude Zumbi
+17                                                                  Rios Pontes &amp; Overdrives
+18                                                                            Lixo Do Mangue
+19                                                                                Podes Crer
+20                                                                              A Cor Do Sol
+21                                                                                    Doutor
+22                                                                          Linha Do Equador
+23                                                                                TriboTchan
+24                                                                              Reggae Tchan
+25                                                                Communication Breakdown(2)
+26                                                                Carolina Hard-Core Ecstasy
+27                                                                                  X-9 2001
+28                                                                             Ipiranga 2001
+29                                                                             Água de Beber
+30                                                                            Vamo Batê Lata
+31                                                                   Mensagen De Amor (2000)
+32                                                                                Saber Amar
+33                                                                               Cinema Mudo
+34                                                                                  Meu Erro
+35                                                                      Será Que Vai Chover?
+36                                                                     Mama, I'm Coming Home
+37                                                                         Flying High Again
+38                                                                                  Paranoid
+39                                                                       Admirável Gado Novo
+40                                        Mis Penas Lloraba Yo (Ao Vivo) Soy Gitano (Tangos)
+41                                                                                   Drifter
+42                                                                             Child In Time
+43                                                                                  No No No
+44                                                                Knocking At Your Back Door
+45                                                                         The Unwritten Law
+46                                                                           Maybe I'm A Leo
+47                                                                 Vavoom : Ted The Mechanic
+48                                                                              D'Yer Mak'er
+49                                                                                No Quarter
+50                                                                            Bittersweet Me
+51                                                                         Binky The Doormat
+52                                                                          So Fast, So Numb
+53                                                                               Electrolite
+54                                                                                       Bad
+55                                                                            Sweetest Thing
+56                                                                         All I Want Is You
+57                                                                            Like A Song...
+58                                                                                 Red Light
+59                                                                                  Babyface
+60                                                                                 Aces High
+61                                                                                    Praise
+62                                                                                Down Under
+63                                                                                 Most High
+64                                                                            Your Blue Room
+65                                                                                  Plot 180
+66                                                                                 Sanctuary
+67                                                                                  Untitled
+68                                                                                     Black
+69                                                                                  Big Wave
+70                                                                                Cropduster
+71                                                                                  1/2 Full
+72                                                                                    Oceans
+73                                                                                 Dissident
+74                                                                           Don't Look Back
+75                                                                            Pick Myself Up
+76                                                                       Any Colour You Like
+77                                                                             Leper Messiah
+78                                                                               Damage Inc.
+79                                                                             Green Disease
+80                                                                                    Why Go
+81                                                                                    Animal
+82                                                                                     Leash
+83                                                                    Wanted Dread And Alive
+84                                                                  The Great Gig In The Sky
+85                                                                                     Bossa
+86                                                                       Nega Do Cabelo Duro
+87                                                                     You're My Best Friend
+88                                                                        Seven Seas Of Rhye
+89                                                                       Get Down, Make Love
+90                                                                                    Get Up
+91                                                                                   Be Mine
+92                                                                                 Redundant
+93                                                                            Into The Light
+94                                                                              Cry For Love
+95                                                                           Grito De Alerta
+96                                                                        Lindo Lago Do Amor
+97                                                                     Ponto De Interrogação
+98                                                         Voce Nao Entende Nada - Cotidiano
+99                                                                               O Leaozinho
+100                                                                                  Top Top
+101                                                                    2 Minutes To Midnight
+102                                                                             Losfer Words
+103                                                                                Bora-Bora
+104                                                        I Feel Good (I Got You) - Sossego
+105                                                                             Sincero Breu
+106                                                                                 Selvagem
+107                                                             O Descobridor Dos Sete Mares
+108                                                                            Não Vou Ficar
+109                                                                            Cristina Nº 2
+110                                                                         O Que Me Importa
+111                                                                              Eu Amo Você
+112                                                                              Nosso Adeus
+113                                                                      Is This Love (Live)
+114                                                                  Right Next Door to Hell
+115                                                                           In The Evening
+116                                                                         Fool In The Rain
+117                                        Saudade Dos Aviões Da Panair (Conversando No Bar)
+118                                                                   Caso Você Queira Saber
+119                                                                                    Dance
+120                                                                                Aos Leões
+121                                                                                 Demorou!
+122                                                                          Home Sweet Home
+123                                                                                    Intro
+124                                                                     Scentless Apprentice
+125                                                                                 In Bloom
+126                                                                               On A Plain
+127                                                                                 Mundaréu
+128                                                                   Nossa Gente (Avisa Là)
+129                                                                           Revolta Olodum
+130                                                                                Vai Valer
+131                                                                               Vai Passar
+132                                                                         Morena De Angola
+133                                                                           Meu Caro Amigo
+134                                                                             Mateus Enter
+135                                                                            Samba Do Lado
+136                                                                    Um Satélite Na Cabeça
+137                                                                            Amor De Muito
+138                                                                Banditismo Por Uma Questa
+139                                                                Maracatu De Tiro Certeiro
+140                                                                        Stir It Up (Live)
+141                                                                          Refavela (Live)
+142                                                                           Be Good Johnny
+143                                                                          Down by the Sea
+144                                                                           It's a Mistake
+145                                                                       Shakes and Ladders
+146                                                                                      Eye
+147                                                                   Stand Inside Your Love
+148                                                                                   Flower
+149                                                                        Jesus Christ Pose
+150                                                                  The Day I Tried To Live
+151                                                                        Burden In My Hand
+152                                                                            Dust N' Bones
+153                                                                         Live and Let Die
+154                                                                       The Memory Remains
+155                                                                        The Unforgiven II
+156                                                                                  Slither
+157                                                                                 Bad Seed
+158                                                                     Black Light Syndrome
+159                                                             Midnight From The Inside Out
+160                                                                      Sometimes Salvation
+161                                                                     Girl From A Pawnshop
+162                                                                               Title Song
+163                                                                             Soul Singing
+164                                                                           Lay Down Sally
+165                                                                                 Duelists
+166                                                                               Powerslave
+167                                                                                    Aloha
+168                                                                                     Será
+169                                                                            Pais E Filhos
+170                                                                    Rock And Roll Is Dead
+171                                                                          I Belong To You
+172                                                                                     Casa
+173                                                                                   A Cura
+174                                                                                   Sereia
+175                                                Heart Of Lothian: Wide Boy / Curtain Call
+176                                                                       Cérebro Eletrônico
+177                                                                           A Menina Dança
+178                                                           You've Been A Long Time Coming
+179                                                                 Abraham, Martin And John
+180                                                                        Everything I Need
+181                                                                            Help Yourself
+182                                          Suite No. 3 in D, BWV 1068: III. Gavotte I &amp; II
+183 Music for the Funeral of Queen Mary: VI. "Thou Knowest, Lord, the Secrets of Our Hearts"
+184       Symphony No. 2, Op. 16 -  "The Four Temperaments": II. Allegro Comodo e Flemmatico
+185     String Quartet No. 12 in C Minor, D. 703 "Quartettsatz": II. Andante - Allegro assai
+186                                                                          Fast As a Shark
+187                                                                               Snowballed
+188                                                                                  Go Down
+189                                                             Hell Ain't A Bad Place To Be</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Qual o álbum mais tocado por pais?</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT c.Country,</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="st">           al.Title AS Album,</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">           ar.Name AS Artista,</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="st">           COUNT(ii.Quantity) AS total_execucoes</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM customers c</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN invoices i       ON c.CustomerId = i.CustomerId</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN invoice_items ii ON i.InvoiceId = ii.InvoiceId</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN tracks t         ON ii.TrackId = t.TrackId</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN albums al        ON t.AlbumId = al.AlbumId</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN artists ar       ON al.ArtistId = ar.ArtistId</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY c.Country, al.Title, ar.Name</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="st">    HAVING total_execucoes = (</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="st">        SELECT MAX(contagem)</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="st">        FROM (</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="st">            SELECT COUNT(ii2.Quantity) AS contagem</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="st">            FROM customers c2</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN invoices i2       ON c2.CustomerId = i2.CustomerId</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN invoice_items ii2 ON i2.InvoiceId = ii2.InvoiceId</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN tracks t2         ON ii2.TrackId = t2.TrackId</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN albums al2        ON t2.AlbumId = al2.AlbumId</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="st">            WHERE c2.Country = c.Country</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="st">            GROUP BY al2.AlbumId</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="st">        )</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="st">    )</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY c.Country;</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Country
+1       Argentina
+2       Australia
+3         Austria
+4         Belgium
+5         Belgium
+6          Brazil
+7          Canada
+8           Chile
+9           Chile
+10          Chile
+11 Czech Republic
+12        Denmark
+13        Denmark
+14        Finland
+15        Finland
+16         France
+17         France
+18        Germany
+19        Germany
+20        Hungary
+21          India
+22        Ireland
+23          Italy
+24    Netherlands
+25         Norway
+26         Norway
+27         Poland
+28       Portugal
+29       Portugal
+30          Spain
+31         Sweden
+32            USA
+33 United Kingdom
+34 United Kingdom
+                                                              Album
+1                                                          Acústico
+2                                                      The X Factor
+3                          My Generation - The Very Best Of The Who
+4                                                          Big Ones
+5                                      Rotten Apples: Greatest Hits
+6                                               Use Your Illusion I
+7                                                        Arquivo II
+8                                    Battlestar Galactica, Season 3
+9                                                  Heroes, Season 1
+10                       My Way: The Best Of Frank Sinatra [Disc 1]
+11                                                     Prenda Minha
+12                                                Chronicle, Vol. 1
+13                                                        Mezmerize
+14                                                    Greatest Hits
+15                                                    Greatest Kiss
+16                                                Chronicle, Vol. 1
+17                                                   Minha Historia
+18                                          Djavan Ao Vivo - Vol. 1
+19                                                        Unplugged
+20                                                              Pop
+21                                                      Up An' Atom
+22                                                   Lost, Season 2
+23                                                         Acústico
+24                                                          In Step
+25                       Cássia Eller - Coleção Sem Limite [Disc 2]
+26                            For Those About To Rock We Salute You
+27                                                   Rattle And Hum
+28 Instant Karma: The Amnesty International Campaign to Save Darfur
+29                                                      Raul Seixas
+30                         My Generation - The Very Best Of The Who
+31                                                      Volume Dois
+32                                             The Office, Season 3
+33                                                             Load
+34                                          No Prayer For The Dying
+                               Artista total_execucoes
+1                                Titãs               4
+2                          Iron Maiden               4
+3                              The Who               4
+4                            Aerosmith               4
+5                    Smashing Pumpkins               4
+6                        Guns N' Roses               7
+7              Os Paralamas Do Sucesso               9
+8                 Battlestar Galactica               3
+9                               Heroes               3
+10                       Frank Sinatra               3
+11                      Caetano Veloso               5
+12        Creedence Clearwater Revival               4
+13                    System Of A Down               4
+14                       Lenny Kravitz               5
+15                                Kiss               5
+16        Creedence Clearwater Revival               7
+17                       Chico Buarque               7
+18                              Djavan               5
+19                        Eric Clapton               5
+20                                  U2               4
+21                          Gene Krupa               6
+22                                Lost               7
+23                               Titãs               4
+24 Stevie Ray Vaughan &amp; Double Trouble               4
+25                        Cássia Eller               4
+26                               AC/DC               4
+27                                  U2               4
+28                                  U2               4
+29                         Raul Seixas               4
+30                             The Who               5
+31                               Titãs               4
+32                          The Office              14
+33                           Metallica               5
+34                         Iron Maiden               5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Qual o artista mais tocado por pais?</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">"</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT c.Country,</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="st">           ar.Name AS Artista,</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="st">           COUNT(ii.Quantity) AS total_execucoes</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM customers c</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN invoices i       ON c.CustomerId = i.CustomerId</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN invoice_items ii ON i.InvoiceId = ii.InvoiceId</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN tracks t         ON ii.TrackId = t.TrackId</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN albums al        ON t.AlbumId = al.AlbumId</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN artists ar       ON al.ArtistId = ar.ArtistId</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY c.Country, ar.Name</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="st">    HAVING total_execucoes = (</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="st">        SELECT MAX(contagem)</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="st">        FROM (</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="st">            SELECT COUNT(ii2.Quantity) AS contagem</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="st">            FROM customers c2</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN invoices i2       ON c2.CustomerId = i2.CustomerId</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN invoice_items ii2 ON i2.InvoiceId = ii2.InvoiceId</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN tracks t2         ON ii2.TrackId = t2.TrackId</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN albums al2        ON t2.AlbumId = al2.AlbumId</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="st">            JOIN artists ar2       ON al2.ArtistId = ar2.ArtistId</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="st">            WHERE c2.Country = c.Country</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="st">            GROUP BY ar2.ArtistId</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="st">        )</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="st">    )</span></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY c.Country;</span></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Country                      Artista total_execucoes
+1       Argentina                    Metallica               6
+2       Australia                  Iron Maiden              18
+3         Austria                           U2               9
+4         Belgium                Faith No More               9
+5          Brazil      Os Paralamas Do Sucesso              11
+6          Brazil                    Pearl Jam              11
+7          Canada      Os Paralamas Do Sucesso              16
+8           Chile                 Led Zeppelin               6
+9  Czech Republic                  Iron Maiden               9
+10 Czech Republic                           U2               9
+11        Denmark Creedence Clearwater Revival               7
+12        Finland                    Van Halen               6
+13         France Creedence Clearwater Revival              11
+14        Germany                  Iron Maiden              14
+15        Hungary                   Jamiroquai               5
+16        Hungary                   The Office               5
+17          India                  Iron Maiden               8
+18        Ireland                         Lost               8
+19          Italy                Faith No More               5
+20          Italy           The Rolling Stones               5
+21    Netherlands        Red Hot Chili Peppers               6
+22         Norway                 Led Zeppelin               9
+23         Poland                           U2               6
+24       Portugal                  Iron Maiden              16
+25          Spain                    Pearl Jam               6
+26         Sweden                        Titãs               5
+27            USA                  Iron Maiden              34
+28 United Kingdom                    Metallica               9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 11. Desconecte do banco de dados.</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
