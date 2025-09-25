@@ -1,0 +1,70 @@
+---
+title: "Arquivo JSON e parquet"
+author: "Victor Souza"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+install.packages("arrow")      # para parquet
+
+library(arrow)
+
+# Criando um tibble simples
+df <- tibble::tibble(
+  id = 1:3,
+  nome = c("Alice", "Bruno", "Carla"),
+  idade = c(25, 30, 22)
+)
+
+# Salvando como Parquet
+write_parquet(df, "exemplo.parquet")
+
+# Lendo de volta
+df_lido <- read_parquet("exemplo.parquet")
+print(df_lido)
+```
+
+```{r}
+
+install.packages("jsonlite")
+
+# Carregar o pacote
+library(jsonlite)
+
+# Criar um data.frame de exemplo
+df <- data.frame(
+  id = 1:3,
+  nome = c("Alice", "Bruno", "Carla"),
+  idade = c(25, 30, 22)
+)
+
+# Salvar como JSON
+write_json(df, "exemplo.json", pretty = TRUE)
+
+# Ler de volta o JSON
+df_json <- read_json("exemplo.json", simplifyVector = TRUE)
+
+print(df_json)
+```

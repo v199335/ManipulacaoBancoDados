@@ -1,0 +1,172 @@
+---
+title: "Laboratório Especial"
+author: "Victor Souza 199335"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
+```
+
+```{r}
+install.packages("readr")
+library(readr)
+arquivo_voos <- read_csv("C:/Users/v1993/Downloads/flights.csv.zip")
+print(head(arquivo_voos))
+```
+
+```{r}
+install.packages(c("tidyverse", "lubridate", "DT", "geosphere", "scales", "leaflet"))
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(lubridate)
+  library(leaflet)
+  library(DT)
+  library(geosphere)
+  library(scales)
+})
+
+###tidyverse: manipulação de dados (dplyr, ggplot2, etc.).
+###lubridate: trabalhar com datas e horas.
+###leaflet: mapas interativos.
+###DT: tabelas interativas (tipo Excel no navegador).
+###geosphere: cálculos geográficos (ex.: distância entre coordenadas).
+###scales: funções utilitárias, como rescale().
+###suppressPackageStartupMessages(): evita mensagens de carregamento poluírem a saída.
+```
+
+```{r}
+###recebe as variáveis desejadas
+ano_desejado <- 2015       
+tail_desejado <- "N431WN"
+
+### Essa parte cria uma função que identifica e recebe os nomes de colunas que variam entre bases diferentes
+voos_padronizados <- function(df) {
+  nomes <- names(df)
+  mapa <- list(
+    airline  = intersect(nomes, c("AIRLINE","carrier"))[1],
+    tail     = intersect(nomes, c("TAIL_NUMBER","tailnum"))[1],
+    origin   = intersect(nomes, c("ORIGIN","ORIGIN_AIRPORT","origin"))[1],
+    dest     = intersect(nomes, c("DESTINATION","DESTINATION_AIRPORT","dest"))[1],
+    dep_time = intersect(nomes, c("DEPARTURE_TIME","dep_time","CRS_DEP_TIME"))[1],
+    arr_time = intersect(nomes, c("ARRIVAL_TIME","arr_time","CRS_ARR_TIME"))[1],
+    year     = intersect(nomes, c("YEAR","year"))[1],
+    month    = intersect(nomes, c("MONTH","month"))[1],
+    day      = intersect(nomes, c("DAY","day"))[1]
+  )
+
+  ###Cria uma função que padroniza os nomes das colunas e cria uma coluna de data completa
+  voos_final <- df %>%
+    rename(
+      AIRLINE     = all_of(mapa$airline),
+      TAIL_NUMBER = all_of(mapa$tail),
+      ORIGIN      = all_of(mapa$origin),
+      DESTINATION = all_of(mapa$dest)
+    ) %>%
+    mutate(DATE = as.Date(sprintf("%04d-%02d-%02d", .data[[mapa$year]], .data[[mapa$month]], .data[[mapa$day]])))
+
+  ###Adiciona ao dataset hora de partida/chegada.
+  if (!is.na(mapa$dep_time)) {
+   voos_final <- voos_final %>% mutate(DEP_TIME = .data[[mapa$dep_time]])
+  }
+  if (!is.na(mapa$arr_time)) {
+    voos_final <- voos_final %>% mutate(ARR_TIME = .data[[mapa$arr_time]])
+  }
+
+  voos_final
+}
+
+###Filtra voos de uma aeronave específica.
+###Restringe ao ano.
+###Ordena por data e hora de partida.
+###Retorna como tibble.
+###Gera a tabela tidy com os trajetos da aeronave.
+caminho_da_aeronave <- function(fx, tail, year = year_target) {
+  fx %>%
+    filter(TAIL_NUMBER == tail, year(DATE) == year) %>%
+    arrange(DATE, DEP_TIME) %>%
+    as_tibble()
+}
+
+if (requireNamespace("nycflights13", quietly = TRUE)) {
+  AIRPORTS <- nycflights13::airports %>%
+    transmute(code = toupper(faa), lat, lon)
+} else {
+  AIRPORTS <- tibble(
+    code = c("BWI","JFK","ORD"),
+    lat = c(39.1774, 40.6413, 41.9742),
+    lon = c(-76.6684, -73.7781, -87.9073)
+  )
+}
+
+### Padroniza o dataset de voos importado e adiciona latitude/longitude de origem e destino.
+voos <- voos_padronizados(arquivo_voos)
+
+voos <- voos %>%
+left_join(AIRPORTS, by = c("ORIGIN" = "code")) %>% rename(ORIGIN_LAT = lat, ORIGIN_LON = lon) %>%
+left_join(AIRPORTS, by = c("DESTINATION" = "code")) %>% rename(DEST_LAT = lat, DEST_LON = lon)
+```
+
+```{r}
+### Cria a tabela tidy
+tabela_dos_trajetos <- caminho_da_aeronave(voos, tail_desejado, ano_desejado)
+
+DT::datatable(tabela_dos_trajetos, options = list(scrollX = TRUE, pageLength = 10))
+```
+
+```{r}
+rotas_voos <- tabela_dos_trajetos %>%
+mutate(
+dist_km = distHaversine(
+matrix(c(ORIGIN_LON, ORIGIN_LAT), ncol = 2),
+matrix(c(DEST_LON, DEST_LAT), ncol = 2)
+)/1000,
+flight_time_min = as.numeric(ARR_TIME) - as.numeric(DEP_TIME),
+speed_kmh = if_else(flight_time_min > 0, dist_km / (flight_time_min/60), NA_real_)
+)
+###distHaversine: calcula a distância entre aeroportos (em km).
+###flight_time_min: diferença entre hora de chegada e partida.
+###speed_kmh: velocidade média (km/h).
+```
+
+```{r}
+mapa_trajeto <- leaflet() %>% addTiles()
+
+if (nrow(rotas_voos) > 0) {
+for (i in seq_len(nrow(rotas_voos))) {
+mapa_trajeto <- mapa_trajeto %>% addPolylines(
+lng = c(rotas_voos$ORIGIN_LON[i], rotas_voos$DEST_LON[i]),
+lat = c(rotas_voos$ORIGIN_LAT[i], rotas_voos$DEST_LAT[i]),
+weight = rescale(rotas_voos$speed_kmh[i], to = c(1,8), from = range(rotas_voos$speed_kmh, na.rm = TRUE)),
+popup = paste0(rotas_voos$ORIGIN[i], " → ", rotas_voos$DESTINATION[i],
+"<br>Distância: ", round(rotas_voos$dist_km[i],1), " km",
+"<br>Velocidade média: ", round(rotas_voos$speed_kmh[i],1), " km/h")
+)}}
+
+mapa_trajeto
+### Desenha as linhas dos trajetos no mapa.
+### A espessura da linha é proporcional à velocidade média do voo.
+### O popup mostra origem → destino, distância e velocidade média.
+```
