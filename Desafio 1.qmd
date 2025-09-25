@@ -1,0 +1,60 @@
+---
+title: "Desafio 1"
+author: "Victor de Lima Souza 199335"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+flights_base <- read.csv(unz("./flights.csv.zip", "flights.csv"))
+head(flights_base)
+
+#O código demorou 1 minuto e 20 segundos para carregar
+```
+
+```{r}
+library(readr)
+
+flights_readr <- read_csv(unz("./flights.csv.zip", "flights.csv"))
+head(flights_readr)
+
+#O código demorou 30 segundos para carregar
+```
+
+```{r}
+library(reticulate)
+py_install("pandas")
+```
+
+```{python}
+import pandas as pd
+import zipfile
+
+with zipfile.ZipFile("./flights.csv.zip") as z:
+    with z.open("flights.csv") as f:
+        flights = pd.read_csv(f)
+print(flights.head())
+
+#O código demorou 29 segundos para carregar
+```
