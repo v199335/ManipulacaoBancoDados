@@ -1,0 +1,88 @@
+---
+title: "Desafio 9"
+author: "Victor de Lima Souza 199335"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+library(readr)
+library(RSQLite)
+
+con <- dbConnect(SQLite(), "voos.sqlite3")
+
+airlines <- read_csv("./airlines.csv")
+airports <- read_csv("./airports.csv")
+
+dbWriteTable(con, "airlines", airlines, overwrite = TRUE)
+dbWriteTable(con, "airports", airports, overwrite = TRUE)
+
+dbListTables(con)
+
+head(dbReadTable(con, "airlines"))
+head(dbReadTable(con, "airports"))
+```
+
+```{r}
+lerDados <- function(input, pos) {
+  message("Leitura atingiu a linha ", pos)
+  dados_filtrados <- subset(input, origin %in% c("BWI", "MIA", "SEA", "SFO", "JFK") |
+                                   dest   %in% c("BWI", "MIA", "SEA", "SFO", "JFK"))
+  
+  dbWriteTable(con, "flights", dados_filtrados, append = TRUE)
+  
+  invisible(NULL)
+}
+```
+
+```{r}
+lerDados <- function(input, pos) {
+  message("Leitura atingiu a linha ", pos)
+
+  dados_filtrados <- input[, c("YEAR", "MONTH", "DAY", "AIRLINE", 
+                               "FLIGHT_NUMBER", "ORIGIN_AIRPORT", 
+                               "DESTINATION_AIRPORT", "ARRIVAL_DELAY")]
+  
+  dados_filtrados <- subset(dados_filtrados,
+                            ORIGIN_AIRPORT %in% c("BWI", "MIA", "SEA", "SFO", "JFK") |
+                            DESTINATION_AIRPORT %in% c("BWI", "MIA", "SEA", "SFO", "JFK"))
+  
+  dbWriteTable(con, "flights", dados_filtrados, append = TRUE)
+  
+  invisible(NULL)
+}
+
+read_csv_chunked(
+  file = "./flights.csv.zip",
+  callback = SideEffectChunkCallback$new(lerDados),
+  chunk_size = 100000
+)
+
+library(DBI)
+dbGetQuery(con, "SELECT COUNT(*) AS total_voos FROM flights")
+dbGetQuery(con, "SELECT * FROM flights LIMIT 10")
+dbDisconnect(con)
+
+print(Sys.time())
+```
